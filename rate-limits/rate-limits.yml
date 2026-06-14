@@ -1,0 +1,43 @@
+name: Sezzle API Rate Limits
+description: >-
+  Sezzle does not publicly document specific API rate limits in their developer
+  documentation as of June 2026. Rate limiting is enforced at the gateway level
+  but thresholds are not disclosed publicly. Merchants experiencing throttling
+  should contact Sezzle merchant support for guidance.
+rateLimits:
+  - name: Authentication Token
+    description: >-
+      Bearer tokens obtained via POST /v2/authentication are short-lived. The
+      token includes an expiration_date field. Merchants should cache and reuse
+      tokens until expiry rather than requesting a new token per API call.
+    scope: per-merchant
+    limit: Not publicly specified
+    window: Token lifetime (see expiration_date in response)
+    notes: >-
+      Excessive authentication requests may trigger throttling. Implement token
+      caching in your integration.
+  - name: API Request Rate
+    description: >-
+      General request rate limiting applied at the gateway level across all v2
+      endpoints. Specific limits are not published; Sezzle recommends
+      implementing standard retry-with-backoff logic for HTTP 429 responses.
+    scope: per-merchant API key
+    limit: Not publicly specified
+    window: Not publicly specified
+    retryAdvice: >-
+      Implement exponential backoff when receiving HTTP 429 Too Many Requests
+      responses. Respect Retry-After headers if present.
+  - name: Webhook Test Endpoint
+    description: >-
+      POST /v2/webhooks/test sends a test webhook event. Intended for
+      development and testing only; excessive calls may be rate-limited.
+    scope: per-merchant
+    limit: Not publicly specified
+    window: Not publicly specified
+notes: >-
+  Sezzle's sandbox environment (sandbox.gateway.sezzle.com/v2) is available
+  for development and testing without impacting production rate limits or
+  transaction fees. All merchants should use the sandbox for integration
+  testing before going live.
+contact:
+  url: https://merchant-help.sezzle.com

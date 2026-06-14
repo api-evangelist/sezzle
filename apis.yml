@@ -1,0 +1,110 @@
+name: Sezzle
+description: >-
+  Sezzle is a buy-now-pay-later platform that enables merchants to offer
+  installment payment options at checkout. Its REST APIs support merchant
+  checkout integration, order management, shopper authentication, customer
+  tokenization, and payment installment processing — allowing shoppers to split
+  purchases into four interest-free payments over six weeks.
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: https://raw.githubusercontent.com/api-evangelist/sezzle/refs/heads/main/apis.yml
+version: '0.19'
+created: '2026-06-13'
+modified: '2026-06-13'
+specificationVersion: '0.19'
+tags:
+  - Buy Now Pay Later
+  - BNPL
+  - Payments
+  - Installments
+  - Fintech
+  - Merchant Integration
+  - Checkout
+apis:
+  - name: Sezzle API v2
+    description: >-
+      The primary Sezzle REST API for merchants who want to accept Sezzle as a
+      payment option. Provides endpoints for authentication, checkout session
+      creation, order management (capture, refund, release, reauthorize,
+      upcharge), customer tokenization, webhook management, and settlement
+      reporting.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://docs.sezzle.com/docs/api/intro
+    baseURL: https://gateway.sezzle.com/v2
+    tags:
+      - Payments
+      - Checkout
+      - Orders
+      - Customers
+      - Webhooks
+      - Settlements
+    properties:
+      - type: Documentation
+        url: https://docs.sezzle.com/docs/api/intro
+      - type: OpenAPI
+        url: https://gateway.sezzle.com/v2api.yaml
+      - type: Sandbox
+        url: https://sandbox.gateway.sezzle.com/v2
+      - type: Authentication
+        url: https://docs.sezzle.com/docs/api/intro
+      - type: Plans
+        url: https://raw.githubusercontent.com/api-evangelist/sezzle/refs/heads/main/plans/plans.yml
+      - type: RateLimits
+        url: https://raw.githubusercontent.com/api-evangelist/sezzle/refs/heads/main/rate-limits/rate-limits.yml
+      - type: FinOps
+        url: https://raw.githubusercontent.com/api-evangelist/sezzle/refs/heads/main/finops/finops.yml
+    contact:
+      - FN: Sezzle Merchant Support
+        url: https://merchant-help.sezzle.com
+        email: ''
+  - name: Sezzle API v1
+    description: >-
+      The legacy Sezzle v1 API for merchants. Supports checkout creation and
+      order completion via redirect-based flow. Deprecated in favor of v2;
+      existing integrations are encouraged to migrate to v2.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://docs.sezzle.com/docs/api/v1/v1
+    baseURL: https://gateway.sezzle.com/v1
+    tags:
+      - Payments
+      - Checkout
+      - Legacy
+    properties:
+      - type: Documentation
+        url: https://docs.sezzle.com/docs/api/v1/v1
+      - type: Sandbox
+        url: https://sandbox.gateway.sezzle.com/v1
+    contact:
+      - FN: Sezzle Merchant Support
+        url: https://merchant-help.sezzle.com
+        email: ''
+common:
+  - type: Portal
+    url: https://docs.sezzle.com/
+  - type: Dashboard
+    url: https://dashboard.sezzle.com/merchant
+  - type: MerchantSupport
+    url: https://merchant-help.sezzle.com
+  - type: GitHub
+    url: https://github.com/sezzle
+  - type: SDKNode
+    url: https://github.com/sezzle/sezzle-node
+  - type: SDKAndroid
+    url: https://github.com/sezzle/sezzle-merchant-sdk-android
+  - type: SDKiOS
+    url: https://github.com/sezzle/sezzle-merchant-sdk-ios
+  - type: IntegrationMagento2
+    url: https://github.com/sezzle/sezzle-magento2
+  - type: IntegrationWooCommerce
+    url: https://docs.sezzle.com/
+  - type: IntegrationShopify
+    url: https://apps.shopify.com/sezzle-payments
+  - type: Pricing
+    url: https://sezzle.com/pricing
+  - type: Terms
+    url: https://sezzle.com/terms-of-service
+  - type: Privacy
+    url: https://sezzle.com/privacy-policy
+maintainers:
+  - FN: API Evangelist
+    url: https://apievangelist.com
+    email: kin@apievangelist.com

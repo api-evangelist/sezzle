@@ -1,0 +1,50 @@
+name: Sezzle Merchant Plans
+description: >-
+  Sezzle offers a merchant account model where pricing is negotiated based on
+  transaction volume, business type, and other factors. There is no publicly
+  tiered self-serve plan structure — merchants apply and receive a custom rate.
+plans:
+  - name: Standard Merchant Plan
+    description: >-
+      Default merchant account for businesses accepting Sezzle at checkout.
+      Transaction fees of 6% + $0.30 per order are typical, though rates vary
+      by merchant profile, product category, and sales volume. A monthly
+      minimum account management fee applies for low-volume months.
+    type: merchant
+    pricing:
+      transactionFee: '6% + $0.30 per transaction (typical; rates vary by merchant)'
+      monthlyMinimum: '$15 USD if less than $300 processed in a 30-day period'
+      setupFee: None
+    features:
+      - Checkout session creation (Pay in 4 installments)
+      - Order capture, refund, release, and reauthorization
+      - Customer tokenization for repeat purchases
+      - Webhook notifications
+      - Settlement reporting and payout summaries
+      - Access to sandbox environment for testing
+      - Merchant dashboard
+      - On-site messaging widgets
+      - Express checkout
+    notes: >-
+      Sezzle offers volume-based discounts for larger retailers. Actual rates
+      are determined by product type, business tenure, and other underwriting
+      factors. Merchants should contact Sezzle for a custom quote.
+    contact:
+      url: https://merchant-help.sezzle.com/hc/en-us/articles/360040495151
+  - name: Enterprise / Volume Plan
+    description: >-
+      Custom negotiated rates for high-volume merchants. Transaction fee
+      discounts available based on monthly GMV thresholds. Contact Sezzle sales
+      for details.
+    type: enterprise
+    pricing:
+      transactionFee: Negotiated (below standard 6% + $0.30)
+      monthlyMinimum: Waived at qualifying volume
+      setupFee: None
+    features:
+      - All Standard plan features
+      - Dedicated account management
+      - Custom integration support
+      - Volume-based rate reductions
+    contact:
+      url: https://sezzle.com/merchant

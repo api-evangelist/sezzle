@@ -1,0 +1,74 @@
+name: Sezzle FinOps
+description: >-
+  Financial operations summary for merchants integrating with Sezzle. Covers
+  transaction fees, settlement/payout timing, refund handling, and the interest
+  account feature available to qualifying merchants.
+costs:
+  transactionFee:
+    description: >-
+      Standard rate charged to merchants per completed Sezzle order. Sezzle
+      deducts this fee before remitting the net amount to the merchant.
+    typical: '6% + $0.30 per transaction'
+    notes: >-
+      Rates vary by merchant; determined at onboarding based on product
+      category, business age, and underwriting. Volume discounts available for
+      high-GMV merchants.
+  monthlyMinimumFee:
+    description: >-
+      If a merchant processes less than $300 USD in a 30-day period, a $15 USD
+      account management fee is charged.
+    amount: '$15 USD'
+    threshold: Less than $300 USD processed in 30 days
+  setupFee:
+    description: No setup or onboarding fee.
+    amount: '$0'
+  chargebackFee:
+    description: Not publicly specified. Contact Sezzle merchant support.
+    amount: Not disclosed
+settlements:
+  description: >-
+    Sezzle remits merchant payouts on a regular schedule. Settlement details,
+    including payout summaries and itemized transaction data, are accessible via
+    the API and the merchant dashboard.
+  endpoints:
+    - GET /v2/settlements/summaries — Retrieve payout summaries
+    - GET /v2/settlements/details/{payout_uuid} — Export settlement CSV
+  payoutSchedule: >-
+    Standard payout timing is not publicly specified; merchants should refer
+    to their merchant agreement or contact Sezzle support for payout cadence.
+  currency: USD
+refunds:
+  description: >-
+    Merchants can issue full or partial refunds via the API. Refunded amounts
+    are deducted from future settlements. The original transaction fee is
+    typically not refunded to the merchant on a refunded order (confirm with
+    Sezzle merchant agreement).
+  endpoint: POST /v2/order/{order_uuid}/refund
+  partialRefunds: Supported
+  fullRefunds: Supported
+interestAccount:
+  description: >-
+    Sezzle offers an interest account feature for qualifying merchants, allowing
+    them to earn interest on held balances. Account balance and activity are
+    accessible via the API.
+  endpoints:
+    - GET /v2/interest/balance — Check interest account balance
+    - GET /v2/interest/activity — View interest account activity
+  notes: Eligibility and terms determined by Sezzle; not available to all merchants.
+consumerFees:
+  description: >-
+    Consumer-facing fees for the Pay in 4 product range from $0 to $7.49
+    depending on purchase price and Sezzle product. Example: a $300 purchase
+    incurs a $7.49 service fee (45.0% APR). These fees are paid by the consumer,
+    not the merchant.
+  range: '$0 – $7.49 per transaction'
+  apr: Up to 45.0% (service-fee based, not traditional interest)
+references:
+  - url: https://sezzle.com/pricing
+    description: Consumer-facing pricing page
+  - url: https://merchant-help.sezzle.com/hc/en-us/categories/16790131106196-Merchant-Fees-Payouts
+    description: Merchant fees and payouts knowledge base
+  - url: https://merchant-help.sezzle.com/hc/en-us/articles/360040495151
+    description: How much does Sezzle cost? (merchant support article)
+  - url: https://synder.com/blog/how-much-does-sezzle-charge-merchants/
+    description: Third-party Sezzle merchant fee analysis
