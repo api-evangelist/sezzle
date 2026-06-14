@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/sezzle/main/json-schema/discount.json",
+  "title": "Discount",
+  "description": "A discount applied to a Sezzle order.",
+  "type": "object",
+  "required": ["amount", "name"],
+  "properties": {
+    "amount": {
+      "$ref": "https://raw.githubusercontent.com/api-evangelist/sezzle/main/json-schema/price.json",
+      "description": "Discount monetary value."
+    },
+    "name": {
+      "type": "string",
+      "description": "Human-readable discount name or code."
+    }
+  }
+}

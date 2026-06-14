@@ -1,0 +1,45 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/sezzle/main/json-schema/address.json",
+  "title": "Address",
+  "description": "A physical address used for billing or shipping.",
+  "type": "object",
+  "required": ["city", "country_code", "postal_code", "state", "street"],
+  "properties": {
+    "city": {
+      "type": "string",
+      "description": "City name."
+    },
+    "country_code": {
+      "type": "string",
+      "description": "ISO-3166 alpha-2 country code."
+    },
+    "name": {
+      "type": "string",
+      "nullable": true,
+      "description": "Full name of the recipient."
+    },
+    "phone": {
+      "type": "string",
+      "nullable": true,
+      "description": "Phone number of the recipient."
+    },
+    "postal_code": {
+      "type": "string",
+      "description": "Postal or ZIP code."
+    },
+    "state": {
+      "type": "string",
+      "description": "State or province abbreviation."
+    },
+    "street": {
+      "type": "string",
+      "description": "Primary street address line."
+    },
+    "street2": {
+      "type": "string",
+      "nullable": true,
+      "description": "Secondary address line (apartment, suite, etc.)."
+    }
+  }
+}

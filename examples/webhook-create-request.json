@@ -1,0 +1,9 @@
+{
+  "url": "https://example.com/webhooks/sezzle",
+  "events": [
+    "order.authorized",
+    "order.captured",
+    "order.refunded",
+    "customer.tokenized"
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "cancel_url": {
+    "href": "https://example.com/cancel",
+    "method": "GET"
+  },
+  "complete_url": {
+    "href": "https://example.com/complete",
+    "method": "GET"
+  },
+  "customer": {
+    "tokenize": true,
+    "email": "shopper@example.com",
+    "first_name": "Jane",
+    "last_name": "Doe",
+    "phone": "555-867-5309",
+    "billing_address": {
+      "street": "123 Main St",
+      "city": "Minneapolis",
+      "state": "MN",
+      "postal_code": "55402",
+      "country_code": "US"
+    },
+    "shipping_address": {
+      "street": "123 Main St",
+      "city": "Minneapolis",
+      "state": "MN",
+      "postal_code": "55402",
+      "country_code": "US"
+    }
+  },
+  "order": {
+    "intent": "AUTH",
+    "reference_id": "merchant-order-1001",
+    "description": "Acme Online Order #1001",
+    "order_amount": {
+      "amount_in_cents": 15000,
+      "currency": "USD"
+    },
+    "items": [
+      {
+        "name": "Widget Pro",
+        "sku": "WGT-PRO-001",
+        "quantity": 2,
+        "price": {
+          "amount_in_cents": 7500,
+          "currency": "USD"
+        }
+      }
+    ],
+    "shipping_amount": {
+      "amount_in_cents": 0,
+      "currency": "USD"
+    },
+    "tax_amount": {
+      "amount_in_cents": 0,
+      "currency": "USD"
+    }
+  }
+}

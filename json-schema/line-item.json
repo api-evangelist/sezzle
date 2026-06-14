@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/sezzle/main/json-schema/line-item.json",
+  "title": "LineItem",
+  "description": "A single product line item within a Sezzle order.",
+  "type": "object",
+  "required": ["name", "price", "quantity", "sku"],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Product name."
+    },
+    "price": {
+      "$ref": "https://raw.githubusercontent.com/api-evangelist/sezzle/main/json-schema/price.json",
+      "description": "Unit price of the product."
+    },
+    "quantity": {
+      "type": "integer",
+      "format": "int32",
+      "description": "Number of units ordered."
+    },
+    "sku": {
+      "type": "string",
+      "description": "Stock-keeping unit identifier."
+    }
+  }
+}

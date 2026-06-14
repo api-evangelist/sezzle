@@ -1,0 +1,127 @@
+{
+  "vocabulary": "Sezzle API v2 Domain Vocabulary",
+  "description": "Key terms and concepts from the Sezzle Buy Now Pay Later API.",
+  "version": "2.0.0",
+  "source": "https://gateway.sezzle.com/v2api.yaml",
+  "terms": [
+    {
+      "term": "Session",
+      "definition": "A transient checkout context created by the merchant that may initiate an order checkout and/or customer tokenization. Identified by a session UUID.",
+      "type": "Resource"
+    },
+    {
+      "term": "Order",
+      "definition": "A purchase agreement between a shopper and merchant processed through Sezzle. An order progresses through checkout, authorization, capture, and optionally release or refund states.",
+      "type": "Resource"
+    },
+    {
+      "term": "Customer",
+      "definition": "A Sezzle shopper who has been tokenized for future merchant-initiated purchases. Identified by a customer UUID.",
+      "type": "Resource"
+    },
+    {
+      "term": "Token",
+      "definition": "A short-lived credential representing a merchant or customer session used to retrieve customer UUIDs for future orders.",
+      "type": "Resource"
+    },
+    {
+      "term": "Webhook",
+      "definition": "An HTTP callback subscription that delivers Sezzle event notifications (e.g. order.authorized) to a merchant-specified URL.",
+      "type": "Resource"
+    },
+    {
+      "term": "Payout",
+      "definition": "A settlement summary representing funds disbursed to the merchant for captured orders within a date range.",
+      "type": "Resource"
+    },
+    {
+      "term": "Price",
+      "definition": "A monetary value represented as an integer amount in the smallest currency unit (cents) paired with an ISO-4217 currency code.",
+      "type": "DataType"
+    },
+    {
+      "term": "Intent",
+      "definition": "Indicates whether an order or session is for AUTH (authorize only, capture later) or CAPTURE (authorize and capture immediately).",
+      "type": "Enum",
+      "values": ["AUTH", "CAPTURE"]
+    },
+    {
+      "term": "InstallmentPlan",
+      "definition": "The financing schedule offered to the shopper. Sezzle supports 4-pay biweekly (default), 4-pay monthly, and 6-pay monthly plans.",
+      "type": "Enum",
+      "values": ["4-pay-biweekly", "4-pay-monthly", "6-pay-monthly"]
+    },
+    {
+      "term": "CheckoutStatus",
+      "definition": "The current state of a checkout session: active (pending shopper action), completed, deleted, or denied.",
+      "type": "Enum",
+      "values": ["active", "completed", "deleted", "denied"]
+    },
+    {
+      "term": "Authorization",
+      "definition": "A confirmed approval from Sezzle that a shopper has sufficient credit for a given order amount. Authorizations have an expiration date-time after which reauthorization is required.",
+      "type": "Concept"
+    },
+    {
+      "term": "Capture",
+      "definition": "The act of settling a previously authorized order, triggering the actual transfer of funds. A partial capture releases the remaining authorized amount.",
+      "type": "Operation"
+    },
+    {
+      "term": "Release",
+      "definition": "Cancellation of an authorized (but not yet captured) amount on an order, returning the credit to the shopper.",
+      "type": "Operation"
+    },
+    {
+      "term": "Refund",
+      "definition": "Return of funds to a shopper for a previously captured order, in whole or in part.",
+      "type": "Operation"
+    },
+    {
+      "term": "Reauthorize",
+      "definition": "Creation of a new authorization for an expired order. Returns a new order UUID that replaces the original for subsequent API operations.",
+      "type": "Operation"
+    },
+    {
+      "term": "Upcharge",
+      "definition": "An additional charge against an existing order, creating a standalone Pay In Full order for up to 15% of the parent order amount. The upcharge is independent from the parent order for capture, refund, and settlement.",
+      "type": "Operation"
+    },
+    {
+      "term": "Tokenize",
+      "definition": "The process of storing a shopper's Sezzle credentials for future merchant-initiated payments without requiring the shopper to re-authenticate at checkout.",
+      "type": "Operation"
+    },
+    {
+      "term": "Preapprove",
+      "definition": "A check against a tokenized customer's Sezzle account to determine whether a given order amount would be approved before creating the order.",
+      "type": "Operation"
+    },
+    {
+      "term": "Settlement",
+      "definition": "The process by which Sezzle disburses merchant earnings. Settlement summaries and details are available via the Reports endpoints.",
+      "type": "Concept"
+    },
+    {
+      "term": "InterestAccount",
+      "definition": "A Sezzle-managed account that accumulates interest on merchant balances, queryable for balance and activity history.",
+      "type": "Concept"
+    },
+    {
+      "term": "SezzleRequestId",
+      "definition": "A client-generated UUID passed in the Sezzle-Request-Id request header to enforce idempotency on mutating operations such as capture, refund, and reauthorize.",
+      "type": "Header"
+    },
+    {
+      "term": "BearerToken",
+      "definition": "A short-lived JWT obtained via the /authentication endpoint using the merchant's public and private API keys. Required in the Authorization header for all subsequent API calls.",
+      "type": "Security"
+    },
+    {
+      "term": "WebhookEvent",
+      "definition": "A named event type that triggers webhook delivery. Supported events: customer.tokenized, order.authorized, order.captured, order.refunded.",
+      "type": "Enum",
+      "values": ["customer.tokenized", "order.authorized", "order.captured", "order.refunded"]
+    }
+  ]
+}

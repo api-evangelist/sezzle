@@ -1,0 +1,37 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/sezzle/main/json-schema/payout.json",
+  "title": "Payout",
+  "description": "A Sezzle settlement payout summary.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "uuid": {
+        "type": "string",
+        "description": "Unique payout identifier."
+      },
+      "payout_currency": {
+        "type": "string",
+        "description": "ISO-4217 currency code of the payout."
+      },
+      "payout_date": {
+        "type": "string",
+        "format": "date-time",
+        "description": "Date and time the payout was issued."
+      },
+      "net_settlement_amount": {
+        "type": "number",
+        "description": "Net amount settled to the merchant."
+      },
+      "forex_fees": {
+        "type": "integer",
+        "description": "Foreign exchange fees applied."
+      },
+      "status": {
+        "type": "string",
+        "description": "Payout status (e.g. Complete, Pending)."
+      }
+    }
+  }
+}

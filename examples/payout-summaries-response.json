@@ -1,0 +1,18 @@
+[
+  {
+    "uuid": "a5c13qt1-4126-41d3-2fq8-9ca431f51431",
+    "payout_currency": "USD",
+    "payout_date": "2026-06-02T00:00:00Z",
+    "net_settlement_amount": 668.61,
+    "forex_fees": 0,
+    "status": "Complete"
+  },
+  {
+    "uuid": "b7d24rs2-5237-52e4-3gr9-0db542g62542",
+    "payout_currency": "USD",
+    "payout_date": "2026-05-26T00:00:00Z",
+    "net_settlement_amount": 1234.50,
+    "forex_fees": 0,
+    "status": "Complete"
+  }
+]

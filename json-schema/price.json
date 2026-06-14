@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/sezzle/main/json-schema/price.json",
+  "title": "Price",
+  "description": "A monetary amount expressed in cents with an ISO-4217 currency code.",
+  "type": "object",
+  "required": ["amount_in_cents", "currency"],
+  "properties": {
+    "amount_in_cents": {
+      "type": "integer",
+      "format": "int32",
+      "description": "The amount in the smallest currency unit (cents)."
+    },
+    "currency": {
+      "type": "string",
+      "description": "ISO-4217 currency code (e.g. USD, CAD)."
+    }
+  }
+}

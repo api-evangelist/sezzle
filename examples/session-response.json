@@ -1,0 +1,26 @@
+{
+  "uuid": "session-uuid-abc123",
+  "links": [
+    {
+      "href": "https://gateway.sezzle.com/v2/session/session-uuid-abc123",
+      "method": "GET",
+      "rel": "self"
+    }
+  ],
+  "order": {
+    "uuid": "order-uuid-xyz789",
+    "checkout_url": "https://checkout.sezzle.com/checkout/order-uuid-xyz789",
+    "links": [
+      {
+        "href": "https://gateway.sezzle.com/v2/order/order-uuid-xyz789",
+        "method": "GET",
+        "rel": "self"
+      }
+    ]
+  },
+  "tokenize": {
+    "token": "tok_abc123",
+    "expiration": "2027-06-13T00:00:00Z",
+    "links": []
+  }
+}

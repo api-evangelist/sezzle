@@ -1,0 +1,261 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "sezzle": "https://docs.sezzle.com/vocab#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "Session": "sezzle:Session",
+    "Order": "sezzle:Order",
+    "Customer": "sezzle:Customer",
+    "Token": "sezzle:Token",
+    "Webhook": "sezzle:Webhook",
+    "Payout": "sezzle:Payout",
+    "Price": "sezzle:Price",
+    "Address": "schema:PostalAddress",
+    "LineItem": "schema:OrderItem",
+    "Discount": "schema:Offer",
+    "Capture": "sezzle:Capture",
+    "Refund": "schema:Refund",
+
+    "uuid": {
+      "@id": "sezzle:uuid",
+      "@type": "xsd:string"
+    },
+    "reference_id": {
+      "@id": "sezzle:referenceId",
+      "@type": "xsd:string"
+    },
+    "order_amount": {
+      "@id": "sezzle:orderAmount",
+      "@type": "sezzle:Price"
+    },
+    "amount_in_cents": {
+      "@id": "sezzle:amountInCents",
+      "@type": "xsd:integer"
+    },
+    "currency": {
+      "@id": "schema:currency",
+      "@type": "xsd:string"
+    },
+    "intent": {
+      "@id": "sezzle:intent",
+      "@type": "xsd:string"
+    },
+    "checkout_url": {
+      "@id": "sezzle:checkoutUrl",
+      "@type": "@id"
+    },
+    "checkout_expiration": {
+      "@id": "sezzle:checkoutExpiration",
+      "@type": "xsd:dateTime"
+    },
+    "checkout_status": {
+      "@id": "sezzle:checkoutStatus",
+      "@type": "xsd:string"
+    },
+    "email": {
+      "@id": "schema:email",
+      "@type": "xsd:string"
+    },
+    "first_name": {
+      "@id": "schema:givenName",
+      "@type": "xsd:string"
+    },
+    "last_name": {
+      "@id": "schema:familyName",
+      "@type": "xsd:string"
+    },
+    "phone": {
+      "@id": "schema:telephone",
+      "@type": "xsd:string"
+    },
+    "dob": {
+      "@id": "schema:birthDate",
+      "@type": "xsd:string"
+    },
+    "token_expiration": {
+      "@id": "sezzle:tokenExpiration",
+      "@type": "xsd:dateTime"
+    },
+    "billing_address": {
+      "@id": "schema:billingAddress",
+      "@type": "schema:PostalAddress"
+    },
+    "shipping_address": {
+      "@id": "schema:deliveryAddress",
+      "@type": "schema:PostalAddress"
+    },
+    "street": {
+      "@id": "schema:streetAddress",
+      "@type": "xsd:string"
+    },
+    "street2": {
+      "@id": "sezzle:streetLine2",
+      "@type": "xsd:string"
+    },
+    "city": {
+      "@id": "schema:addressLocality",
+      "@type": "xsd:string"
+    },
+    "state": {
+      "@id": "schema:addressRegion",
+      "@type": "xsd:string"
+    },
+    "postal_code": {
+      "@id": "schema:postalCode",
+      "@type": "xsd:string"
+    },
+    "country_code": {
+      "@id": "schema:addressCountry",
+      "@type": "xsd:string"
+    },
+    "name": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "sku": {
+      "@id": "schema:sku",
+      "@type": "xsd:string"
+    },
+    "quantity": {
+      "@id": "schema:orderQuantity",
+      "@type": "xsd:integer"
+    },
+    "price": {
+      "@id": "schema:price",
+      "@type": "sezzle:Price"
+    },
+    "items": {
+      "@id": "schema:orderedItem",
+      "@container": "@set"
+    },
+    "discounts": {
+      "@id": "sezzle:discounts",
+      "@container": "@set"
+    },
+    "shipping_amount": {
+      "@id": "sezzle:shippingAmount",
+      "@type": "sezzle:Price"
+    },
+    "tax_amount": {
+      "@id": "sezzle:taxAmount",
+      "@type": "sezzle:Price"
+    },
+    "metadata": {
+      "@id": "sezzle:metadata"
+    },
+    "url": {
+      "@id": "schema:url",
+      "@type": "@id"
+    },
+    "events": {
+      "@id": "sezzle:webhookEvents",
+      "@container": "@set"
+    },
+    "expiration": {
+      "@id": "sezzle:expiration",
+      "@type": "xsd:dateTime"
+    },
+    "expiration_date": {
+      "@id": "sezzle:expirationDate",
+      "@type": "xsd:dateTime"
+    },
+    "merchant_uuid": {
+      "@id": "sezzle:merchantUuid",
+      "@type": "xsd:string"
+    },
+    "token": {
+      "@id": "sezzle:token",
+      "@type": "xsd:string"
+    },
+    "tokenize": {
+      "@id": "sezzle:tokenize",
+      "@type": "xsd:boolean"
+    },
+    "approved": {
+      "@id": "sezzle:approved",
+      "@type": "xsd:boolean"
+    },
+    "authorization_amount": {
+      "@id": "sezzle:authorizationAmount",
+      "@type": "sezzle:Price"
+    },
+    "sezzle_order_id": {
+      "@id": "sezzle:sezzleOrderId",
+      "@type": "xsd:string"
+    },
+    "financing_option": {
+      "@id": "sezzle:financingOption",
+      "@type": "xsd:string"
+    },
+    "captures": {
+      "@id": "sezzle:captures",
+      "@container": "@set"
+    },
+    "releases": {
+      "@id": "sezzle:releases",
+      "@container": "@set"
+    },
+    "refunds": {
+      "@id": "sezzle:refunds",
+      "@container": "@set"
+    },
+    "amount": {
+      "@id": "sezzle:amount",
+      "@type": "sezzle:Price"
+    },
+    "payout_currency": {
+      "@id": "sezzle:payoutCurrency",
+      "@type": "xsd:string"
+    },
+    "payout_date": {
+      "@id": "sezzle:payoutDate",
+      "@type": "xsd:dateTime"
+    },
+    "net_settlement_amount": {
+      "@id": "sezzle:netSettlementAmount",
+      "@type": "xsd:decimal"
+    },
+    "forex_fees": {
+      "@id": "sezzle:forexFees",
+      "@type": "xsd:integer"
+    },
+    "status": {
+      "@id": "sezzle:status",
+      "@type": "xsd:string"
+    },
+    "links": {
+      "@id": "sezzle:links",
+      "@container": "@set"
+    },
+    "href": {
+      "@id": "schema:url",
+      "@type": "@id"
+    },
+    "method": {
+      "@id": "sezzle:httpMethod",
+      "@type": "xsd:string"
+    },
+    "rel": {
+      "@id": "sezzle:linkRelation",
+      "@type": "xsd:string"
+    },
+    "is_upcharge": {
+      "@id": "sezzle:isUpcharge",
+      "@type": "xsd:boolean"
+    },
+    "parent_order_uuid": {
+      "@id": "sezzle:parentOrderUuid",
+      "@type": "xsd:string"
+    },
+    "upcharges": {
+      "@id": "sezzle:upcharges",
+      "@container": "@set"
+    },
+    "interest_balance": {
+      "@id": "sezzle:interestBalance",
+      "@type": "xsd:decimal"
+    }
+  }
+}

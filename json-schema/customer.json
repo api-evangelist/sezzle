@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/sezzle/main/json-schema/customer.json",
+  "title": "Customer",
+  "description": "A Sezzle shopper/customer with personal and address details.",
+  "type": "object",
+  "properties": {
+    "email": {
+      "type": "string",
+      "format": "email",
+      "description": "Customer email address."
+    },
+    "first_name": {
+      "type": "string",
+      "description": "Customer first name."
+    },
+    "last_name": {
+      "type": "string",
+      "description": "Customer last name."
+    },
+    "phone": {
+      "type": "string",
+      "description": "Customer phone number."
+    },
+    "dob": {
+      "type": "string",
+      "description": "Customer date of birth."
+    },
+    "token_expiration": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Expiration datetime of the customer token."
+    },
+    "billing_address": {
+      "$ref": "https://raw.githubusercontent.com/api-evangelist/sezzle/main/json-schema/address.json"
+    },
+    "shipping_address": {
+      "$ref": "https://raw.githubusercontent.com/api-evangelist/sezzle/main/json-schema/address.json"
+    }
+  }
+}

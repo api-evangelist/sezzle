@@ -1,0 +1,6 @@
+{
+  "capture_amount": {
+    "amount_in_cents": 15000,
+    "currency": "USD"
+  }
+}

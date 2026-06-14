@@ -1,0 +1,55 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/sezzle/main/json-schema/order.json",
+  "title": "Order",
+  "description": "A Sezzle merchant order with line items, amounts, and checkout details.",
+  "type": "object",
+  "properties": {
+    "reference_id": {
+      "type": "string",
+      "description": "Merchant-assigned order reference identifier."
+    },
+    "description": {
+      "type": "string",
+      "description": "Human-readable order description."
+    },
+    "requires_shipping_info": {
+      "type": "boolean",
+      "description": "Whether the checkout flow should collect shipping information."
+    },
+    "items": {
+      "type": "array",
+      "description": "Line items included in the order.",
+      "items": {
+        "$ref": "https://raw.githubusercontent.com/api-evangelist/sezzle/main/json-schema/line-item.json"
+      }
+    },
+    "discounts": {
+      "type": "array",
+      "description": "Discounts applied to the order.",
+      "items": {
+        "$ref": "https://raw.githubusercontent.com/api-evangelist/sezzle/main/json-schema/discount.json"
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Arbitrary key-value metadata attached to the order.",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "shipping_amount": {
+      "$ref": "https://raw.githubusercontent.com/api-evangelist/sezzle/main/json-schema/price.json",
+      "description": "Shipping cost."
+    },
+    "tax_amount": {
+      "$ref": "https://raw.githubusercontent.com/api-evangelist/sezzle/main/json-schema/price.json",
+      "description": "Tax amount."
+    },
+    "checkout_expiration": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the checkout session expires."
+    }
+  }
+}
