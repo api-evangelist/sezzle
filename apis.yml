@@ -5,7 +5,7 @@ description: >-
   checkout integration, order management, shopper authentication, customer
   tokenization, and payment installment processing — allowing shoppers to split
   purchases into four interest-free payments over six weeks.
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/sezzle/refs/heads/main/apis.yml
 version: '0.19'
 created: '2026-06-13'
@@ -27,7 +27,7 @@ apis:
       creation, order management (capture, refund, release, reauthorize,
       upcharge), customer tokenization, webhook management, and settlement
       reporting.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://docs.sezzle.com/docs/api/intro
     baseURL: https://gateway.sezzle.com/v2
     tags:
@@ -61,7 +61,7 @@ apis:
       The legacy Sezzle v1 API for merchants. Supports checkout creation and
       order completion via redirect-based flow. Deprecated in favor of v2;
       existing integrations are encouraged to migrate to v2.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://docs.sezzle.com/docs/api/v1/v1
     baseURL: https://gateway.sezzle.com/v1
     tags:
