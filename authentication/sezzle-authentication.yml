@@ -1,0 +1,15 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/sezzle-v2-openapi.yaml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: Bearer
+  type: apiKey
+  in: header
+  parameter: Authorization
+  sources:
+  - openapi/sezzle-v2-openapi.yaml

@@ -78,6 +78,12 @@ apis:
         url: https://merchant-help.sezzle.com
         email: ''
 common:
+  - type: VulnerabilityDisclosure
+    url: security/sezzle-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/sezzle-domain-security.yml
+  - type: Authentication
+    url: authentication/sezzle-authentication.yml
   - type: Portal
     url: https://docs.sezzle.com/
   - type: Dashboard
