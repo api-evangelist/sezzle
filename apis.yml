@@ -78,6 +78,8 @@ apis:
         url: https://merchant-help.sezzle.com
         email: ''
 common:
+  - type: AgenticAccess
+    url: agentic-access/sezzle-agentic-access.yml
   - type: VulnerabilityDisclosure
     url: security/sezzle-vulnerability-disclosure.yml
   - type: DomainSecurity
