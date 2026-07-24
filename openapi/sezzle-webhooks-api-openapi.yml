@@ -1,0 +1,235 @@
+openapi: 3.0.1
+info:
+  title: Sezzle API v2 Bearer Authentication Webhooks API
+  description: This Sezzle API is for merchants who want to accept Sezzle as a payment option
+  termsOfService: https://legal.sezzle.com
+  version: 2.0.0
+  x-logo:
+    url: https://media.sezzle.com/branding/2.0/png/Logo_WhiteWordmark_500x126.png
+    backgroundColor: '#392558'
+servers:
+- url: https://sandbox.gateway.sezzle.com/v2
+  description: development server, usa, ca
+- url: https://gateway.sezzle.com/v2
+  description: production server, usa, ca
+security:
+- Bearer: []
+tags:
+- name: Webhooks
+paths:
+  /webhooks:
+    post:
+      tags:
+      - Webhooks
+      summary: Create webhooks
+      operationId: postV2Webhooks
+      requestBody:
+        description: Webhooks request
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Webhook'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  uuid:
+                    type: string
+                  links:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Link'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '422':
+          $ref: '#/components/responses/Unprocessable'
+    get:
+      tags:
+      - Webhooks
+      summary: List webhooks
+      operationId: getV2Webhooks
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  allOf:
+                  - type: object
+                    properties:
+                      uuid:
+                        type: string
+                      links:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Link'
+                  - $ref: '#/components/schemas/Webhook'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /webhooks/{webhooks_uuid}:
+    get:
+      tags:
+      - Webhooks
+      summary: Get webhook
+      operationId: getV2Webhook
+      parameters:
+      - name: webhooks_uuid
+        in: path
+        description: Webhooks UUID
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  properties:
+                    uuid:
+                      type: string
+                    links:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/Link'
+                - $ref: '#/components/schemas/Webhook'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      tags:
+      - Webhooks
+      summary: Delete webhooks
+      operationId: deleteV2Webhooks
+      parameters:
+      - name: webhooks_uuid
+        in: path
+        description: Webhooks UUID
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Successful operation
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /webhooks/test:
+    post:
+      tags:
+      - Webhooks
+      summary: Trigger a test webhook
+      operationId: postV2WebhookTest
+      requestBody:
+        description: request
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WebhookTest'
+        required: true
+      responses:
+        '204':
+          description: Successful operation
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  schemas:
+    Link:
+      type: object
+      properties:
+        href:
+          type: string
+        method:
+          type: string
+        rel:
+          type: string
+    WebhookEvent:
+      type: string
+      enum:
+      - customer.tokenized
+      - order.authorized
+      - order.captured
+      - order.refunded
+    Webhook:
+      required:
+      - url
+      type: object
+      properties:
+        url:
+          type: string
+        events:
+          type: array
+          items:
+            $ref: '#/components/schemas/WebhookEvent'
+    WebhookTest:
+      required:
+      - url
+      type: object
+      properties:
+        url:
+          type: string
+        event:
+          $ref: '#/components/schemas/WebhookEvent'
+    Error:
+      type: array
+      items:
+        type: object
+        properties:
+          code:
+            type: string
+          location:
+            type: string
+          message:
+            type: string
+          debug_uuid:
+            type: string
+  responses:
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: Invalid request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The specified resource was not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unprocessable:
+      description: Unable to process the request entity
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    Bearer:
+      type: apiKey
+      name: Authorization
+      in: header
+externalDocs:
+  description: Sezzle API guides and tutorials
+  url: https://docs.sezzle.com/sezzle-integration

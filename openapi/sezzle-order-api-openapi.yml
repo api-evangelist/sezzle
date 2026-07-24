@@ -1,0 +1,580 @@
+openapi: 3.0.1
+info:
+  title: Sezzle API v2 Bearer Authentication Order API
+  description: This Sezzle API is for merchants who want to accept Sezzle as a payment option
+  termsOfService: https://legal.sezzle.com
+  version: 2.0.0
+  x-logo:
+    url: https://media.sezzle.com/branding/2.0/png/Logo_WhiteWordmark_500x126.png
+    backgroundColor: '#392558'
+servers:
+- url: https://sandbox.gateway.sezzle.com/v2
+  description: development server, usa, ca
+- url: https://gateway.sezzle.com/v2
+  description: production server, usa, ca
+security:
+- Bearer: []
+tags:
+- name: Order
+paths:
+  /order/{order_uuid}:
+    get:
+      tags:
+      - Order
+      summary: Get order details
+      operationId: getV2Order
+      parameters:
+      - name: order_uuid
+        in: path
+        description: Order UUID
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/SessionStatus'
+                - type: object
+                  properties:
+                    intent:
+                      $ref: '#/components/schemas/Intent'
+                    reference_id:
+                      type: string
+                    description:
+                      type: string
+                    checkout_expiration:
+                      type: string
+                      format: date-time
+                    checkout_status:
+                      $ref: '#/components/schemas/CheckoutStatus'
+                    metadata:
+                      type: object
+                      additionalProperties:
+                        type: string
+                    order_amount:
+                      $ref: '#/components/schemas/Price'
+                    customer:
+                      $ref: '#/components/schemas/Customer'
+                    authorization:
+                      $ref: '#/components/schemas/OrderAuthorization'
+                    is_upcharge:
+                      type: boolean
+                      description: True if this order was created via the Upcharge endpoint to capture an additional amount on a parent order.
+                    parent_order_uuid:
+                      type: string
+                      description: When `is_upcharge` is true, the UUID of the original (parent) order that this upcharge was applied to.
+                    upcharges:
+                      type: array
+                      description: When the order is a parent that has had upcharges applied, lists each upcharge order's UUID and amount. Use the listed UUIDs with other Order API endpoints (Get Order, Capture, Refund, etc).
+                      items:
+                        type: object
+                        properties:
+                          uuid:
+                            type: string
+                          amount:
+                            $ref: '#/components/schemas/Price'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    patch:
+      tags:
+      - Order
+      summary: Update order
+      operationId: patchV2Checkout
+      parameters:
+      - name: order_uuid
+        in: path
+        description: Order UUID
+        required: true
+        schema:
+          type: string
+      requestBody:
+        description: Session request
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                reference_id:
+                  type: string
+        required: true
+      responses:
+        '204':
+          description: Updated
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/Unprocessable'
+  /order/{order_uuid}/release:
+    post:
+      tags:
+      - Order
+      summary: Release amount by order
+      operationId: postV2ReleaseByOrder
+      parameters:
+      - name: order_uuid
+        in: path
+        description: Order UUID
+        required: true
+        schema:
+          type: string
+      - name: Sezzle-Request-Id
+        in: header
+        description: Unique client-generated ID to enforce idempotency
+        required: false
+        schema:
+          type: string
+      requestBody:
+        description: Release request
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Price'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  uuid:
+                    type: string
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/Unprocessable'
+  /order/{order_uuid}/capture:
+    post:
+      tags:
+      - Order
+      summary: Capture amount by order
+      operationId: postV2CaptureByOrder
+      parameters:
+      - name: order_uuid
+        in: path
+        description: Order UUID
+        required: true
+        schema:
+          type: string
+      - name: Sezzle-Request-Id
+        in: header
+        description: Unique client-generated ID to enforce idempotency
+        required: false
+        schema:
+          type: string
+      requestBody:
+        description: Capture request
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                capture_amount:
+                  $ref: '#/components/schemas/Price'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  uuid:
+                    type: string
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/Unprocessable'
+  /order/{order_uuid}/refund:
+    post:
+      tags:
+      - Order
+      summary: Refund amount by order
+      operationId: postV2RefundByOrder
+      parameters:
+      - name: order_uuid
+        in: path
+        description: Order UUID
+        required: true
+        schema:
+          type: string
+      - name: Sezzle-Request-Id
+        in: header
+        description: Unique client-generated ID to enforce idempotency
+        required: false
+        schema:
+          type: string
+      requestBody:
+        description: Refund request
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Price'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  uuid:
+                    type: string
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/Unprocessable'
+  /order/{order_uuid}/reauthorize:
+    post:
+      tags:
+      - Order
+      summary: Reauthorize amount by order
+      description: '- Allowed once the original order authorization has expired
+
+        - Response will be a new order and its `uuid` can be used on the Order API endpoints
+
+        '
+      operationId: postV2ReauthorizeByOrder
+      parameters:
+      - name: order_uuid
+        in: path
+        description: Order UUID
+        required: true
+        schema:
+          type: string
+      - name: Sezzle-Request-Id
+        in: header
+        description: Unique client-generated ID to enforce idempotency
+        required: false
+        schema:
+          type: string
+      requestBody:
+        description: Reauthorize request
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Price'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/SessionStatus'
+                - type: object
+                  properties:
+                    intent:
+                      type: string
+                    reference_id:
+                      type: string
+                    description:
+                      type: string
+                    metadata:
+                      type: object
+                      additionalProperties:
+                        type: string
+                    order_amount:
+                      $ref: '#/components/schemas/Price'
+                    authorization:
+                      $ref: '#/components/schemas/OrderAuthorization'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/Unprocessable'
+  /order/{order_uuid}/upcharge:
+    post:
+      tags:
+      - Order
+      summary: Upcharge amount by order
+      description: "Charges an additional amount against an existing order by creating a new standalone Pay In Full order\nfor the original shopper. The upcharge order is independent from the parent for capture, refund, and\nsettlement -- the parent order is not released or modified.\n\n- The currency of the upcharge must match the currency of the original order.\n- The cumulative total of all upcharges on a given parent order must not exceed 15% of the parent order amount.\n- The returned `uuid` is the new upcharge order's UUID and can be used with all other Order API endpoints\n  (Get Order, Capture, Refund, etc).\n- The relationship is queryable via Get Order on the new UUID, which returns `is_upcharge: true` and\n  `parent_order_uuid` referencing the original order.\n"
+      operationId: postV2UpchargeByOrder
+      parameters:
+      - name: order_uuid
+        in: path
+        description: Order UUID
+        required: true
+        schema:
+          type: string
+      - name: Sezzle-Request-Id
+        in: header
+        description: Unique client-generated ID to enforce idempotency
+        required: false
+        schema:
+          type: string
+      requestBody:
+        description: Upcharge request
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                intent:
+                  $ref: '#/components/schemas/Intent'
+                upcharge_amount:
+                  $ref: '#/components/schemas/Price'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/SessionStatus'
+                - type: object
+                  properties:
+                    intent:
+                      type: string
+                    reference_id:
+                      type: string
+                    description:
+                      type: string
+                    metadata:
+                      type: object
+                      additionalProperties:
+                        type: string
+                    order_amount:
+                      $ref: '#/components/schemas/Price'
+                    authorization:
+                      $ref: '#/components/schemas/OrderAuthorization'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/Unprocessable'
+  /order/{order_uuid}/checkout:
+    delete:
+      tags:
+      - Order
+      summary: Delete checkout by order
+      operationId: deleteV2DeleteCheckoutByOrder
+      parameters:
+      - name: order_uuid
+        in: path
+        description: Order UUID
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Successful operation
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/Unprocessable'
+components:
+  schemas:
+    Link:
+      type: object
+      properties:
+        href:
+          type: string
+        method:
+          type: string
+        rel:
+          type: string
+    Capture:
+      type: object
+      properties:
+        uuid:
+          type: string
+        amount:
+          $ref: '#/components/schemas/Price'
+    Address:
+      required:
+      - city
+      - country_code
+      - postal_code
+      - state
+      - street
+      type: object
+      properties:
+        city:
+          type: string
+        country_code:
+          type: string
+        name:
+          type: string
+          nullable: true
+        phone:
+          type: string
+          nullable: true
+        postal_code:
+          type: string
+        state:
+          type: string
+        street:
+          type: string
+        street2:
+          type: string
+          nullable: true
+    Customer:
+      type: object
+      properties:
+        email:
+          type: string
+        first_name:
+          type: string
+        last_name:
+          type: string
+        phone:
+          type: string
+        dob:
+          type: string
+        token_expiration:
+          type: string
+          format: date-time
+        billing_address:
+          $ref: '#/components/schemas/Address'
+        shipping_address:
+          $ref: '#/components/schemas/Address'
+    Refund:
+      type: object
+      properties:
+        uuid:
+          type: string
+        amount:
+          $ref: '#/components/schemas/Price'
+    Price:
+      required:
+      - amount_in_cents
+      - currency
+      type: object
+      properties:
+        amount_in_cents:
+          type: integer
+          format: int32
+        currency:
+          type: string
+    CheckoutStatus:
+      type: string
+      enum:
+      - active
+      - completed
+      - deleted
+      - denied
+    Error:
+      type: array
+      items:
+        type: object
+        properties:
+          code:
+            type: string
+          location:
+            type: string
+          message:
+            type: string
+          debug_uuid:
+            type: string
+    OrderAuthorization:
+      type: object
+      properties:
+        authorization_amount:
+          $ref: '#/components/schemas/Price'
+        authorization_amount_in_user_currency:
+          $ref: '#/components/schemas/Price'
+          description: 'Authorization amount denominated in the shopper''s currency. Sezzle always settles in the shopper''s local currency, so this is the amount actually authorized against the shopper''s account. Only populated after the shopper has completed checkout and the order has been created; the field is omitted on pre-order calls and on the rare upstream regression.
+
+            '
+        approved:
+          type: boolean
+        expiration:
+          type: string
+          format: date-time
+        financing_option:
+          type: string
+        sezzle_order_id:
+          type: string
+          description: Internal Sezzle Order ID (in Merchant Dashboard)
+        releases:
+          type: array
+          items:
+            $ref: '#/components/schemas/Capture'
+        captures:
+          type: array
+          items:
+            $ref: '#/components/schemas/Capture'
+        refunds:
+          type: array
+          items:
+            $ref: '#/components/schemas/Refund'
+    SessionStatus:
+      type: object
+      properties:
+        uuid:
+          type: string
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/Link'
+    Intent:
+      type: string
+      enum:
+      - AUTH
+      - CAPTURE
+  responses:
+    BadRequest:
+      description: Invalid request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The specified resource was not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unprocessable:
+      description: Unable to process the request entity
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    Bearer:
+      type: apiKey
+      name: Authorization
+      in: header
+externalDocs:
+  description: Sezzle API guides and tutorials
+  url: https://docs.sezzle.com/sezzle-integration

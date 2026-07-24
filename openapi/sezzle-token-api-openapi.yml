@@ -1,0 +1,136 @@
+openapi: 3.0.1
+info:
+  title: Sezzle API v2 Bearer Authentication Token API
+  description: This Sezzle API is for merchants who want to accept Sezzle as a payment option
+  termsOfService: https://legal.sezzle.com
+  version: 2.0.0
+  x-logo:
+    url: https://media.sezzle.com/branding/2.0/png/Logo_WhiteWordmark_500x126.png
+    backgroundColor: '#392558'
+servers:
+- url: https://sandbox.gateway.sezzle.com/v2
+  description: development server, usa, ca
+- url: https://gateway.sezzle.com/v2
+  description: production server, usa, ca
+security:
+- Bearer: []
+tags:
+- name: Token
+paths:
+  /token/{token}/session:
+    get:
+      tags:
+      - Token
+      summary: Get session token
+      operationId: getV2SessionToken
+      parameters:
+      - name: token
+        in: path
+        description: Merchant initiated token
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Token'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /token/{token}/customer:
+    get:
+      tags:
+      - Token
+      summary: Get customer token
+      operationId: getV2CustomerToken
+      parameters:
+      - name: token
+        in: path
+        description: Customer initiated token, e.g. generated in mobile app
+        required: true
+        schema:
+          type: string
+      responses:
+        '501':
+          description: not implemented yet
+components:
+  schemas:
+    Link:
+      type: object
+      properties:
+        href:
+          type: string
+        method:
+          type: string
+        rel:
+          type: string
+    Token:
+      type: object
+      properties:
+        token:
+          type: string
+        expiration:
+          type: string
+          format: date-time
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/Link'
+        customer:
+          type: object
+          properties:
+            uuid:
+              type: string
+            expiration:
+              type: string
+              format: date-time
+            links:
+              type: array
+              items:
+                $ref: '#/components/schemas/Link'
+    Error:
+      type: array
+      items:
+        type: object
+        properties:
+          code:
+            type: string
+          location:
+            type: string
+          message:
+            type: string
+          debug_uuid:
+            type: string
+  responses:
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: Invalid request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The specified resource was not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    Bearer:
+      type: apiKey
+      name: Authorization
+      in: header
+externalDocs:
+  description: Sezzle API guides and tutorials
+  url: https://docs.sezzle.com/sezzle-integration
