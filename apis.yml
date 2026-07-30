@@ -5,7 +5,20 @@ description: >-
   checkout integration, order management, shopper authentication, customer
   tokenization, and payment installment processing — allowing shoppers to split
   purchases into four interest-free payments over six weeks.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: paid
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Paid · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/sezzle.png
 url: https://raw.githubusercontent.com/api-evangelist/sezzle/refs/heads/main/apis.yml
 version: '0.19'
 created: '2026-06-13'
@@ -20,63 +33,194 @@ tags:
   - Merchant Integration
   - Checkout
 apis:
-  - name: Sezzle API v2
-    description: >-
-      The primary Sezzle REST API for merchants who want to accept Sezzle as a
-      payment option. Provides endpoints for authentication, checkout session
-      creation, order management (capture, refund, release, reauthorize,
-      upcharge), customer tokenization, webhook management, and settlement
-      reporting.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://docs.sezzle.com/docs/api/intro
-    baseURL: https://gateway.sezzle.com/v2
-    tags:
-      - Payments
-      - Checkout
-      - Orders
-      - Customers
-      - Webhooks
-      - Settlements
-    properties:
-      - type: Documentation
-        url: https://docs.sezzle.com/docs/api/intro
-      - type: OpenAPI
-        url: https://gateway.sezzle.com/v2api.yaml
-      - type: Sandbox
-        url: https://sandbox.gateway.sezzle.com/v2
-      - type: Authentication
-        url: https://docs.sezzle.com/docs/api/intro
-      - type: Plans
-        url: https://raw.githubusercontent.com/api-evangelist/sezzle/refs/heads/main/plans/plans.yml
-      - type: RateLimits
-        url: https://raw.githubusercontent.com/api-evangelist/sezzle/refs/heads/main/rate-limits/rate-limits.yml
-      - type: FinOps
-        url: https://raw.githubusercontent.com/api-evangelist/sezzle/refs/heads/main/finops/finops.yml
-    contact:
-      - FN: Sezzle Merchant Support
-        url: https://merchant-help.sezzle.com
-        email: ''
-  - name: Sezzle API v1
-    description: >-
-      The legacy Sezzle v1 API for merchants. Supports checkout creation and
-      order completion via redirect-based flow. Deprecated in favor of v2;
-      existing integrations are encouraged to migrate to v2.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://docs.sezzle.com/docs/api/v1/v1
-    baseURL: https://gateway.sezzle.com/v1
-    tags:
-      - Payments
-      - Checkout
-      - Legacy
-    properties:
-      - type: Documentation
-        url: https://docs.sezzle.com/docs/api/v1/v1
-      - type: Sandbox
-        url: https://sandbox.gateway.sezzle.com/v1
-    contact:
-      - FN: Sezzle Merchant Support
-        url: https://merchant-help.sezzle.com
-        email: ''
+- name: Sezzle API v1
+  description: >-
+    The legacy Sezzle v1 API for merchants. Supports checkout creation and order completion via redirect-based
+    flow. Deprecated in favor of v2; existing integrations are encouraged to migrate to v2.
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.sezzle.com/docs/api/v1/v1
+  baseURL: https://gateway.sezzle.com/v1
+  tags:
+  - Payments
+  - Checkout
+  - Legacy
+  properties:
+  - type: Documentation
+    url: https://docs.sezzle.com/docs/api/v1/v1
+  - type: Sandbox
+    url: https://sandbox.gateway.sezzle.com/v1
+  contact:
+  - FN: Sezzle Merchant Support
+    url: https://merchant-help.sezzle.com
+    email: ''
+- aid: sezzle:sezzle-bearer-authentication-api
+  name: Sezzle Bearer Authentication API
+  description: The Bearer Authentication API from Sezzle — 1 operation(s) for bearer authentication.
+  humanURL: https://docs.sezzle.com/docs/api/intro
+  baseURL: https://gateway.sezzle.com/v2
+  tags:
+  - Bearer Authentication
+  properties:
+  - type: OpenAPI
+    url: openapi/sezzle-bearer-authentication-api-openapi.yml
+  - type: Documentation
+    url: https://docs.sezzle.com/docs/api/intro
+  - type: Sandbox
+    url: https://sandbox.gateway.sezzle.com/v2
+  - type: Authentication
+    url: https://docs.sezzle.com/docs/api/intro
+  - type: Plans
+    url: https://raw.githubusercontent.com/api-evangelist/sezzle/refs/heads/main/plans/plans.yml
+  - type: RateLimits
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sezzle/refs/heads/main/rate-limits/rate-limits.yml
+  - type: FinOps
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sezzle/refs/heads/main/finops/finops.yml
+- aid: sezzle:sezzle-customer-api
+  name: Sezzle Customer API
+  description: The Customer API from Sezzle — 4 operation(s) for customer.
+  humanURL: https://docs.sezzle.com/docs/api/intro
+  baseURL: https://gateway.sezzle.com/v2
+  tags:
+  - Customer
+  properties:
+  - type: OpenAPI
+    url: openapi/sezzle-customer-api-openapi.yml
+  - type: Documentation
+    url: https://docs.sezzle.com/docs/api/intro
+  - type: Sandbox
+    url: https://sandbox.gateway.sezzle.com/v2
+  - type: Authentication
+    url: https://docs.sezzle.com/docs/api/intro
+  - type: Plans
+    url: https://raw.githubusercontent.com/api-evangelist/sezzle/refs/heads/main/plans/plans.yml
+  - type: RateLimits
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sezzle/refs/heads/main/rate-limits/rate-limits.yml
+  - type: FinOps
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sezzle/refs/heads/main/finops/finops.yml
+- aid: sezzle:sezzle-order-api
+  name: Sezzle Order API
+  description: The Order API from Sezzle — 7 operation(s) for order.
+  humanURL: https://docs.sezzle.com/docs/api/intro
+  baseURL: https://gateway.sezzle.com/v2
+  tags:
+  - Order
+  properties:
+  - type: OpenAPI
+    url: openapi/sezzle-order-api-openapi.yml
+  - type: Documentation
+    url: https://docs.sezzle.com/docs/api/intro
+  - type: Sandbox
+    url: https://sandbox.gateway.sezzle.com/v2
+  - type: Authentication
+    url: https://docs.sezzle.com/docs/api/intro
+  - type: Plans
+    url: https://raw.githubusercontent.com/api-evangelist/sezzle/refs/heads/main/plans/plans.yml
+  - type: RateLimits
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sezzle/refs/heads/main/rate-limits/rate-limits.yml
+  - type: FinOps
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sezzle/refs/heads/main/finops/finops.yml
+- aid: sezzle:sezzle-reports-api
+  name: Sezzle Reports API
+  description: The Reports API from Sezzle — 4 operation(s) for reports.
+  humanURL: https://docs.sezzle.com/docs/api/intro
+  baseURL: https://gateway.sezzle.com/v2
+  tags:
+  - Reports
+  properties:
+  - type: OpenAPI
+    url: openapi/sezzle-reports-api-openapi.yml
+  - type: Documentation
+    url: https://docs.sezzle.com/docs/api/intro
+  - type: Sandbox
+    url: https://sandbox.gateway.sezzle.com/v2
+  - type: Authentication
+    url: https://docs.sezzle.com/docs/api/intro
+  - type: Plans
+    url: https://raw.githubusercontent.com/api-evangelist/sezzle/refs/heads/main/plans/plans.yml
+  - type: RateLimits
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sezzle/refs/heads/main/rate-limits/rate-limits.yml
+  - type: FinOps
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sezzle/refs/heads/main/finops/finops.yml
+- aid: sezzle:sezzle-session-api
+  name: Sezzle Session API
+  description: The Session API from Sezzle — 2 operation(s) for session.
+  humanURL: https://docs.sezzle.com/docs/api/intro
+  baseURL: https://gateway.sezzle.com/v2
+  tags:
+  - Session
+  properties:
+  - type: OpenAPI
+    url: openapi/sezzle-session-api-openapi.yml
+  - type: Documentation
+    url: https://docs.sezzle.com/docs/api/intro
+  - type: Sandbox
+    url: https://sandbox.gateway.sezzle.com/v2
+  - type: Authentication
+    url: https://docs.sezzle.com/docs/api/intro
+  - type: Plans
+    url: https://raw.githubusercontent.com/api-evangelist/sezzle/refs/heads/main/plans/plans.yml
+  - type: RateLimits
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sezzle/refs/heads/main/rate-limits/rate-limits.yml
+  - type: FinOps
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sezzle/refs/heads/main/finops/finops.yml
+- aid: sezzle:sezzle-token-api
+  name: Sezzle Token API
+  description: The Token API from Sezzle — 2 operation(s) for token.
+  humanURL: https://docs.sezzle.com/docs/api/intro
+  baseURL: https://gateway.sezzle.com/v2
+  tags:
+  - Token
+  properties:
+  - type: OpenAPI
+    url: openapi/sezzle-token-api-openapi.yml
+  - type: Documentation
+    url: https://docs.sezzle.com/docs/api/intro
+  - type: Sandbox
+    url: https://sandbox.gateway.sezzle.com/v2
+  - type: Authentication
+    url: https://docs.sezzle.com/docs/api/intro
+  - type: Plans
+    url: https://raw.githubusercontent.com/api-evangelist/sezzle/refs/heads/main/plans/plans.yml
+  - type: RateLimits
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sezzle/refs/heads/main/rate-limits/rate-limits.yml
+  - type: FinOps
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sezzle/refs/heads/main/finops/finops.yml
+- aid: sezzle:sezzle-webhooks-api
+  name: Sezzle Webhooks API
+  description: The Webhooks API from Sezzle — 3 operation(s) for webhooks.
+  humanURL: https://docs.sezzle.com/docs/api/intro
+  baseURL: https://gateway.sezzle.com/v2
+  tags:
+  - Webhooks
+  properties:
+  - type: OpenAPI
+    url: openapi/sezzle-webhooks-api-openapi.yml
+  - type: Documentation
+    url: https://docs.sezzle.com/docs/api/intro
+  - type: Sandbox
+    url: https://sandbox.gateway.sezzle.com/v2
+  - type: Authentication
+    url: https://docs.sezzle.com/docs/api/intro
+  - type: Plans
+    url: https://raw.githubusercontent.com/api-evangelist/sezzle/refs/heads/main/plans/plans.yml
+  - type: RateLimits
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sezzle/refs/heads/main/rate-limits/rate-limits.yml
+  - type: FinOps
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sezzle/refs/heads/main/finops/finops.yml
 common:
   - type: AgenticAccess
     url: agentic-access/sezzle-agentic-access.yml
