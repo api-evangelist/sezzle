@@ -1,0 +1,26 @@
+{
+  "provider": "sezzle",
+  "sources": [
+    "sezzle-bearer-authentication-api-openapi.yml",
+    "sezzle-customer-api-openapi.yml",
+    "sezzle-order-api-openapi.yml",
+    "sezzle-reports-api-openapi.yml",
+    "sezzle-session-api-openapi.yml",
+    "sezzle-token-api-openapi.yml",
+    "sezzle-webhooks-api-openapi.yml"
+  ],
+  "outputs": [
+    "sezzle-bearer-authentication-api-openapi.yml",
+    "sezzle-customer-api-openapi.yml",
+    "sezzle-order-api-openapi.yml",
+    "sezzle-reports-api-openapi.yml",
+    "sezzle-session-api-openapi.yml",
+    "sezzle-token-api-openapi.yml",
+    "sezzle-webhooks-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
