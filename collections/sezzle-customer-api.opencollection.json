@@ -1,0 +1,127 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sezzle API v2 Bearer Authentication Customer API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Customer",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get list of customers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.gateway.sezzle.com/v2/customer"
+          },
+          "docs": "Get list of customers"
+        },
+        {
+          "info": {
+            "name": "Get customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.gateway.sezzle.com/v2/customer/:customer_uuid",
+            "params": [
+              {
+                "name": "customer_uuid",
+                "value": "",
+                "type": "path",
+                "description": "Customer UUID"
+              }
+            ]
+          },
+          "docs": "Get customer"
+        },
+        {
+          "info": {
+            "name": "Delete customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://sandbox.gateway.sezzle.com/v2/customer/:customer_uuid",
+            "params": [
+              {
+                "name": "customer_uuid",
+                "value": "",
+                "type": "path",
+                "description": "Customer UUID"
+              }
+            ]
+          },
+          "docs": "Delete customer"
+        },
+        {
+          "info": {
+            "name": "Preapprove amount by customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.gateway.sezzle.com/v2/customer/:customer_uuid/preapprove",
+            "params": [
+              {
+                "name": "customer_uuid",
+                "value": "",
+                "type": "path",
+                "description": "Customer UUID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Preapprove amount by customer"
+        },
+        {
+          "info": {
+            "name": "Create order by customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.gateway.sezzle.com/v2/customer/:customer_uuid/order",
+            "headers": [
+              {
+                "name": "Sezzle-Request-Id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "customer_uuid",
+                "value": "",
+                "type": "path",
+                "description": "Customer UUID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create order by customer"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

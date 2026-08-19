@@ -1,0 +1,2885 @@
+{
+  "item": [
+    {
+      "id": "4d520318-383e-4ef8-a399-031a9e432946",
+      "name": "Order",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "390f8d67-25d9-4861-a27e-5f3a62ab23e1",
+          "name": "Get order details",
+          "request": {
+            "name": "Get order details",
+            "description": {},
+            "url": {
+              "path": [
+                "order",
+                ":order_uuid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "order_uuid",
+                  "description": "(Required) Order UUID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "42df7f3d-870f-4aff-b2f9-ed15d62a8a36",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "order",
+                    ":order_uuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_uuid",
+                      "description": "(Required) Order UUID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"uuid\": \"string\",\n  \"links\": [\n    {\n      \"href\": \"string\",\n      \"method\": \"string\",\n      \"rel\": \"string\"\n    },\n    {\n      \"href\": \"string\",\n      \"method\": \"string\",\n      \"rel\": \"string\"\n    }\n  ],\n  \"intent\": \"CAPTURE\",\n  \"reference_id\": \"string\",\n  \"description\": \"string\",\n  \"checkout_expiration\": \"1956-02-06T22:18:54.262Z\",\n  \"checkout_status\": \"denied\",\n  \"metadata\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\"\n  },\n  \"order_amount\": {\n    \"amount_in_cents\": 9949,\n    \"currency\": \"string\"\n  },\n  \"customer\": {\n    \"email\": \"string\",\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"phone\": \"string\",\n    \"dob\": \"string\",\n    \"token_expiration\": \"1985-11-24T21:55:30.783Z\",\n    \"billing_address\": {\n      \"city\": \"string\",\n      \"country_code\": \"string\",\n      \"postal_code\": \"string\",\n      \"state\": \"string\",\n      \"street\": \"string\",\n      \"name\": \"string\",\n      \"phone\": \"string\",\n      \"street2\": \"string\"\n    },\n    \"shipping_address\": {\n      \"city\": \"string\",\n      \"country_code\": \"string\",\n      \"postal_code\": \"string\",\n      \"state\": \"string\",\n      \"street\": \"string\",\n      \"name\": \"string\",\n      \"phone\": \"string\",\n      \"street2\": \"string\"\n    }\n  },\n  \"authorization\": {\n    \"authorization_amount\": {\n      \"amount_in_cents\": 3157,\n      \"currency\": \"string\"\n    },\n    \"authorization_amount_in_user_currency\": {\n      \"amount_in_cents\": 4036,\n      \"currency\": \"string\"\n    },\n    \"approved\": true,\n    \"expiration\": \"1948-12-20T01:35:33.112Z\",\n    \"financing_option\": \"string\",\n    \"sezzle_order_id\": \"string\",\n    \"releases\": [\n      {\n        \"uuid\": \"string\",\n        \"amount\": {\n          \"amount_in_cents\": 3138,\n          \"currency\": \"string\"\n        }\n      },\n      {\n        \"uuid\": \"string\",\n        \"amount\": {\n          \"amount_in_cents\": 2552,\n          \"currency\": \"string\"\n        }\n      }\n    ],\n    \"captures\": [\n      {\n        \"uuid\": \"string\",\n        \"amount\": {\n          \"amount_in_cents\": 783,\n          \"currency\": \"string\"\n        }\n      },\n      {\n        \"uuid\": \"string\",\n        \"amount\": {\n          \"amount_in_cents\": 1712,\n          \"currency\": \"string\"\n        }\n      }\n    ],\n    \"refunds\": [\n      {\n        \"uuid\": \"string\",\n        \"amount\": {\n          \"amount_in_cents\": 9189,\n          \"currency\": \"string\"\n        }\n      },\n      {\n        \"uuid\": \"string\",\n        \"amount\": {\n          \"amount_in_cents\": 4839,\n          \"currency\": \"string\"\n        }\n      }\n    ]\n  },\n  \"is_upcharge\": true,\n  \"parent_order_uuid\": \"string\",\n  \"upcharges\": [\n    {\n      \"uuid\": \"string\",\n      \"amount\": {\n        \"amount_in_cents\": 1597,\n        \"currency\": \"string\"\n      }\n    },\n    {\n      \"uuid\": \"string\",\n      \"amount\": {\n        \"amount_in_cents\": 3937,\n        \"currency\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "22620f13-d28e-43ef-8a91-cffa8acece6d",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "order",
+                    ":order_uuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_uuid",
+                      "description": "(Required) Order UUID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  },\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dd527e38-61ea-4211-b961-ed56302fb44f",
+              "name": "The specified resource was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "order",
+                    ":order_uuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_uuid",
+                      "description": "(Required) Order UUID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  },\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e07427ea-9734-45e7-8648-3078d97d27d0",
+          "name": "Update order",
+          "request": {
+            "name": "Update order",
+            "description": {},
+            "url": {
+              "path": [
+                "order",
+                ":order_uuid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "order_uuid",
+                  "description": "(Required) Order UUID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"reference_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9bf4c7b6-e35c-4f64-af51-c13c0eeb8e39",
+              "name": "Updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "order",
+                    ":order_uuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_uuid",
+                      "description": "(Required) Order UUID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reference_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "86ef01ec-0e6b-458c-a814-502fda9b9e35",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "order",
+                    ":order_uuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_uuid",
+                      "description": "(Required) Order UUID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reference_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  },\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "327ab8be-1fd2-4839-9cef-038133d22f4e",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "order",
+                    ":order_uuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_uuid",
+                      "description": "(Required) Order UUID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reference_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  },\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7acfc16d-e102-451e-8f6a-cdd65582f628",
+              "name": "The specified resource was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "order",
+                    ":order_uuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_uuid",
+                      "description": "(Required) Order UUID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reference_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  },\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2a7d8e62-cc26-470e-8f7f-4192afced79e",
+              "name": "Unable to process the request entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "order",
+                    ":order_uuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_uuid",
+                      "description": "(Required) Order UUID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reference_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  },\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e76a2fc9-b86e-42f3-a05f-ee2d7169ed00",
+          "name": "Release amount by order",
+          "request": {
+            "name": "Release amount by order",
+            "description": {},
+            "url": {
+              "path": [
+                "order",
+                ":order_uuid",
+                "release"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "order_uuid",
+                  "description": "(Required) Order UUID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Unique client-generated ID to enforce idempotency",
+                "key": "Sezzle-Request-Id",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount_in_cents\": \"<integer>\",\n  \"currency\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "599a1c7a-a4ea-4bc9-a861-0ad4f2783d34",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "order",
+                    ":order_uuid",
+                    "release"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_uuid",
+                      "description": "(Required) Order UUID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Unique client-generated ID to enforce idempotency",
+                    "key": "Sezzle-Request-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount_in_cents\": \"<integer>\",\n  \"currency\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"uuid\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "301c8ee1-3dd5-4e41-bdee-fd906021eb70",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "order",
+                    ":order_uuid",
+                    "release"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_uuid",
+                      "description": "(Required) Order UUID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Unique client-generated ID to enforce idempotency",
+                    "key": "Sezzle-Request-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount_in_cents\": \"<integer>\",\n  \"currency\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  },\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4d52cd9c-6321-4c38-a0e3-ed04223ef3e4",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "order",
+                    ":order_uuid",
+                    "release"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_uuid",
+                      "description": "(Required) Order UUID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Unique client-generated ID to enforce idempotency",
+                    "key": "Sezzle-Request-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount_in_cents\": \"<integer>\",\n  \"currency\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  },\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "642ca36c-67a2-41ad-9597-b9731dcdfcb5",
+              "name": "The specified resource was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "order",
+                    ":order_uuid",
+                    "release"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_uuid",
+                      "description": "(Required) Order UUID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Unique client-generated ID to enforce idempotency",
+                    "key": "Sezzle-Request-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount_in_cents\": \"<integer>\",\n  \"currency\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  },\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1eeb3b57-c5e3-4e8d-9ae6-1ef4f3fdecd8",
+              "name": "Unable to process the request entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "order",
+                    ":order_uuid",
+                    "release"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_uuid",
+                      "description": "(Required) Order UUID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Unique client-generated ID to enforce idempotency",
+                    "key": "Sezzle-Request-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount_in_cents\": \"<integer>\",\n  \"currency\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  },\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b42cae35-19a5-49b0-94fe-745c1438a5ab",
+          "name": "Capture amount by order",
+          "request": {
+            "name": "Capture amount by order",
+            "description": {},
+            "url": {
+              "path": [
+                "order",
+                ":order_uuid",
+                "capture"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "order_uuid",
+                  "description": "(Required) Order UUID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Unique client-generated ID to enforce idempotency",
+                "key": "Sezzle-Request-Id",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"capture_amount\": {\n    \"amount_in_cents\": \"<integer>\",\n    \"currency\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5c294fdc-e093-4240-b9bc-f7d8f4bed4b0",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "order",
+                    ":order_uuid",
+                    "capture"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_uuid",
+                      "description": "(Required) Order UUID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Unique client-generated ID to enforce idempotency",
+                    "key": "Sezzle-Request-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"capture_amount\": {\n    \"amount_in_cents\": \"<integer>\",\n    \"currency\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"uuid\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c27ff5c4-a6b3-4a9d-b611-a3a67e54f808",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "order",
+                    ":order_uuid",
+                    "capture"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_uuid",
+                      "description": "(Required) Order UUID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Unique client-generated ID to enforce idempotency",
+                    "key": "Sezzle-Request-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"capture_amount\": {\n    \"amount_in_cents\": \"<integer>\",\n    \"currency\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  },\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fbb59921-58c2-478d-87a5-7a43c707458a",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "order",
+                    ":order_uuid",
+                    "capture"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_uuid",
+                      "description": "(Required) Order UUID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Unique client-generated ID to enforce idempotency",
+                    "key": "Sezzle-Request-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"capture_amount\": {\n    \"amount_in_cents\": \"<integer>\",\n    \"currency\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  },\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e0041cbb-7b08-4bfe-b46c-0e2a7450a279",
+              "name": "The specified resource was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "order",
+                    ":order_uuid",
+                    "capture"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_uuid",
+                      "description": "(Required) Order UUID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Unique client-generated ID to enforce idempotency",
+                    "key": "Sezzle-Request-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"capture_amount\": {\n    \"amount_in_cents\": \"<integer>\",\n    \"currency\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  },\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "971ea44c-d81c-47a2-8f22-f7d8449167e2",
+              "name": "Unable to process the request entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "order",
+                    ":order_uuid",
+                    "capture"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_uuid",
+                      "description": "(Required) Order UUID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Unique client-generated ID to enforce idempotency",
+                    "key": "Sezzle-Request-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"capture_amount\": {\n    \"amount_in_cents\": \"<integer>\",\n    \"currency\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  },\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d63de578-b109-4566-9045-c5b76595c1a0",
+          "name": "Refund amount by order",
+          "request": {
+            "name": "Refund amount by order",
+            "description": {},
+            "url": {
+              "path": [
+                "order",
+                ":order_uuid",
+                "refund"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "order_uuid",
+                  "description": "(Required) Order UUID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Unique client-generated ID to enforce idempotency",
+                "key": "Sezzle-Request-Id",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount_in_cents\": \"<integer>\",\n  \"currency\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6f1f3135-5e38-441a-a531-6e6e1a792d18",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "order",
+                    ":order_uuid",
+                    "refund"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_uuid",
+                      "description": "(Required) Order UUID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Unique client-generated ID to enforce idempotency",
+                    "key": "Sezzle-Request-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount_in_cents\": \"<integer>\",\n  \"currency\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"uuid\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6314e6e5-c1fc-418b-b8e3-90a8af2dcb97",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "order",
+                    ":order_uuid",
+                    "refund"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_uuid",
+                      "description": "(Required) Order UUID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Unique client-generated ID to enforce idempotency",
+                    "key": "Sezzle-Request-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount_in_cents\": \"<integer>\",\n  \"currency\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  },\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4c30dfa9-a5ca-4c9e-96a2-136f774aa1eb",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "order",
+                    ":order_uuid",
+                    "refund"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_uuid",
+                      "description": "(Required) Order UUID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Unique client-generated ID to enforce idempotency",
+                    "key": "Sezzle-Request-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount_in_cents\": \"<integer>\",\n  \"currency\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  },\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "23ef6464-61dc-4323-aaff-c4adf177e7bc",
+              "name": "The specified resource was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "order",
+                    ":order_uuid",
+                    "refund"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_uuid",
+                      "description": "(Required) Order UUID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Unique client-generated ID to enforce idempotency",
+                    "key": "Sezzle-Request-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount_in_cents\": \"<integer>\",\n  \"currency\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  },\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "162e3454-26fd-4a31-aad6-e0d70a124317",
+              "name": "Unable to process the request entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "order",
+                    ":order_uuid",
+                    "refund"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_uuid",
+                      "description": "(Required) Order UUID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Unique client-generated ID to enforce idempotency",
+                    "key": "Sezzle-Request-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount_in_cents\": \"<integer>\",\n  \"currency\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  },\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4262bee5-e60b-4cc0-b9c5-718658e697a3",
+          "name": "Reauthorize amount by order",
+          "request": {
+            "name": "Reauthorize amount by order",
+            "description": {
+              "content": "- Allowed once the original order authorization has expired\n- Response will be a new order and its `uuid` can be used on the Order API endpoints\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "order",
+                ":order_uuid",
+                "reauthorize"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "order_uuid",
+                  "description": "(Required) Order UUID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Unique client-generated ID to enforce idempotency",
+                "key": "Sezzle-Request-Id",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount_in_cents\": \"<integer>\",\n  \"currency\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e6bc9d6e-a604-4c8c-86f0-9b5bd03160a4",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "order",
+                    ":order_uuid",
+                    "reauthorize"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_uuid",
+                      "description": "(Required) Order UUID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Unique client-generated ID to enforce idempotency",
+                    "key": "Sezzle-Request-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount_in_cents\": \"<integer>\",\n  \"currency\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"uuid\": \"string\",\n  \"links\": [\n    {\n      \"href\": \"string\",\n      \"method\": \"string\",\n      \"rel\": \"string\"\n    },\n    {\n      \"href\": \"string\",\n      \"method\": \"string\",\n      \"rel\": \"string\"\n    }\n  ],\n  \"intent\": \"string\",\n  \"reference_id\": \"string\",\n  \"description\": \"string\",\n  \"metadata\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\"\n  },\n  \"order_amount\": {\n    \"amount_in_cents\": \"<integer>\",\n    \"currency\": \"<string>\"\n  },\n  \"authorization\": {\n    \"authorization_amount\": {\n      \"amount_in_cents\": \"<integer>\",\n      \"currency\": \"<string>\"\n    },\n    \"authorization_amount_in_user_currency\": {\n      \"amount_in_cents\": \"<integer>\",\n      \"currency\": \"<string>\"\n    },\n    \"approved\": false,\n    \"expiration\": \"1972-07-09T03:15:36.665Z\",\n    \"financing_option\": \"string\",\n    \"sezzle_order_id\": \"string\",\n    \"releases\": [\n      {\n        \"uuid\": \"string\",\n        \"amount\": {\n          \"amount_in_cents\": \"<integer>\",\n          \"currency\": \"<string>\"\n        }\n      },\n      {\n        \"uuid\": \"string\",\n        \"amount\": {\n          \"amount_in_cents\": \"<integer>\",\n          \"currency\": \"<string>\"\n        }\n      }\n    ],\n    \"captures\": [\n      {\n        \"uuid\": \"string\",\n        \"amount\": {\n          \"amount_in_cents\": \"<integer>\",\n          \"currency\": \"<string>\"\n        }\n      },\n      {\n        \"uuid\": \"string\",\n        \"amount\": {\n          \"amount_in_cents\": \"<integer>\",\n          \"currency\": \"<string>\"\n        }\n      }\n    ],\n    \"refunds\": [\n      {\n        \"uuid\": \"string\",\n        \"amount\": {\n          \"amount_in_cents\": \"<integer>\",\n          \"currency\": \"<string>\"\n        }\n      },\n      {\n        \"uuid\": \"string\",\n        \"amount\": {\n          \"amount_in_cents\": \"<integer>\",\n          \"currency\": \"<string>\"\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "30d8bf96-636e-4503-b0d4-4cb782bc3223",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "order",
+                    ":order_uuid",
+                    "reauthorize"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_uuid",
+                      "description": "(Required) Order UUID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Unique client-generated ID to enforce idempotency",
+                    "key": "Sezzle-Request-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount_in_cents\": \"<integer>\",\n  \"currency\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  },\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b8aac16f-d01b-415c-893a-71ea188b9e0b",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "order",
+                    ":order_uuid",
+                    "reauthorize"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_uuid",
+                      "description": "(Required) Order UUID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Unique client-generated ID to enforce idempotency",
+                    "key": "Sezzle-Request-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount_in_cents\": \"<integer>\",\n  \"currency\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  },\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d959467d-cdd5-4150-b8ae-3fca6adc2e88",
+              "name": "The specified resource was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "order",
+                    ":order_uuid",
+                    "reauthorize"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_uuid",
+                      "description": "(Required) Order UUID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Unique client-generated ID to enforce idempotency",
+                    "key": "Sezzle-Request-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount_in_cents\": \"<integer>\",\n  \"currency\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  },\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bc0be398-7171-441f-8834-25840bcc12cd",
+              "name": "Unable to process the request entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "order",
+                    ":order_uuid",
+                    "reauthorize"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_uuid",
+                      "description": "(Required) Order UUID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Unique client-generated ID to enforce idempotency",
+                    "key": "Sezzle-Request-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount_in_cents\": \"<integer>\",\n  \"currency\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  },\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f5e6783b-f606-46a5-8a3f-58e7b758dd28",
+          "name": "Upcharge amount by order",
+          "request": {
+            "name": "Upcharge amount by order",
+            "description": {
+              "content": "Charges an additional amount against an existing order by creating a new standalone Pay In Full order\nfor the original shopper. The upcharge order is independent from the parent for capture, refund, and\nsettlement -- the parent order is not released or modified.\n\n- The currency of the upcharge must match the currency of the original order.\n- The cumulative total of all upcharges on a given parent order must not exceed 15% of the parent order amount.\n- The returned `uuid` is the new upcharge order's UUID and can be used with all other Order API endpoints\n  (Get Order, Capture, Refund, etc).\n- The relationship is queryable via Get Order on the new UUID, which returns `is_upcharge: true` and\n  `parent_order_uuid` referencing the original order.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "order",
+                ":order_uuid",
+                "upcharge"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "order_uuid",
+                  "description": "(Required) Order UUID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Unique client-generated ID to enforce idempotency",
+                "key": "Sezzle-Request-Id",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"intent\": \"<string>\",\n  \"upcharge_amount\": {\n    \"amount_in_cents\": \"<integer>\",\n    \"currency\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5cf303aa-ba61-4795-9d05-c2480a8eb26d",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "order",
+                    ":order_uuid",
+                    "upcharge"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_uuid",
+                      "description": "(Required) Order UUID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Unique client-generated ID to enforce idempotency",
+                    "key": "Sezzle-Request-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"intent\": \"<string>\",\n  \"upcharge_amount\": {\n    \"amount_in_cents\": \"<integer>\",\n    \"currency\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"uuid\": \"string\",\n  \"links\": [\n    {\n      \"href\": \"string\",\n      \"method\": \"string\",\n      \"rel\": \"string\"\n    },\n    {\n      \"href\": \"string\",\n      \"method\": \"string\",\n      \"rel\": \"string\"\n    }\n  ],\n  \"intent\": \"string\",\n  \"reference_id\": \"string\",\n  \"description\": \"string\",\n  \"metadata\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\"\n  },\n  \"order_amount\": {\n    \"amount_in_cents\": \"<integer>\",\n    \"currency\": \"<string>\"\n  },\n  \"authorization\": {\n    \"authorization_amount\": {\n      \"amount_in_cents\": \"<integer>\",\n      \"currency\": \"<string>\"\n    },\n    \"authorization_amount_in_user_currency\": {\n      \"amount_in_cents\": \"<integer>\",\n      \"currency\": \"<string>\"\n    },\n    \"approved\": false,\n    \"expiration\": \"1972-07-09T03:15:36.665Z\",\n    \"financing_option\": \"string\",\n    \"sezzle_order_id\": \"string\",\n    \"releases\": [\n      {\n        \"uuid\": \"string\",\n        \"amount\": {\n          \"amount_in_cents\": \"<integer>\",\n          \"currency\": \"<string>\"\n        }\n      },\n      {\n        \"uuid\": \"string\",\n        \"amount\": {\n          \"amount_in_cents\": \"<integer>\",\n          \"currency\": \"<string>\"\n        }\n      }\n    ],\n    \"captures\": [\n      {\n        \"uuid\": \"string\",\n        \"amount\": {\n          \"amount_in_cents\": \"<integer>\",\n          \"currency\": \"<string>\"\n        }\n      },\n      {\n        \"uuid\": \"string\",\n        \"amount\": {\n          \"amount_in_cents\": \"<integer>\",\n          \"currency\": \"<string>\"\n        }\n      }\n    ],\n    \"refunds\": [\n      {\n        \"uuid\": \"string\",\n        \"amount\": {\n          \"amount_in_cents\": \"<integer>\",\n          \"currency\": \"<string>\"\n        }\n      },\n      {\n        \"uuid\": \"string\",\n        \"amount\": {\n          \"amount_in_cents\": \"<integer>\",\n          \"currency\": \"<string>\"\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e6bfd347-b2f9-4842-8b49-78e291cdeff7",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "order",
+                    ":order_uuid",
+                    "upcharge"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_uuid",
+                      "description": "(Required) Order UUID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Unique client-generated ID to enforce idempotency",
+                    "key": "Sezzle-Request-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"intent\": \"<string>\",\n  \"upcharge_amount\": {\n    \"amount_in_cents\": \"<integer>\",\n    \"currency\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  },\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a39b2e9d-9934-49f0-9aca-59b2acccad23",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "order",
+                    ":order_uuid",
+                    "upcharge"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_uuid",
+                      "description": "(Required) Order UUID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Unique client-generated ID to enforce idempotency",
+                    "key": "Sezzle-Request-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"intent\": \"<string>\",\n  \"upcharge_amount\": {\n    \"amount_in_cents\": \"<integer>\",\n    \"currency\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  },\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "43a8b515-1d6e-4912-a657-c920af39ff76",
+              "name": "The specified resource was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "order",
+                    ":order_uuid",
+                    "upcharge"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_uuid",
+                      "description": "(Required) Order UUID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Unique client-generated ID to enforce idempotency",
+                    "key": "Sezzle-Request-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"intent\": \"<string>\",\n  \"upcharge_amount\": {\n    \"amount_in_cents\": \"<integer>\",\n    \"currency\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  },\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6380e757-2839-4ee2-9f1c-ac9faaee35f5",
+              "name": "Unable to process the request entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "order",
+                    ":order_uuid",
+                    "upcharge"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_uuid",
+                      "description": "(Required) Order UUID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Unique client-generated ID to enforce idempotency",
+                    "key": "Sezzle-Request-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"intent\": \"<string>\",\n  \"upcharge_amount\": {\n    \"amount_in_cents\": \"<integer>\",\n    \"currency\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  },\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "148ac352-38fc-4f98-9fbb-19d66ccc55c0",
+          "name": "Delete checkout by order",
+          "request": {
+            "name": "Delete checkout by order",
+            "description": {},
+            "url": {
+              "path": [
+                "order",
+                ":order_uuid",
+                "checkout"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "order_uuid",
+                  "description": "(Required) Order UUID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e17c7649-9bbc-4a27-a09c-6fff2499751d",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "order",
+                    ":order_uuid",
+                    "checkout"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_uuid",
+                      "description": "(Required) Order UUID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5ec1dea3-37e7-4110-af12-16b1a9379781",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "order",
+                    ":order_uuid",
+                    "checkout"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_uuid",
+                      "description": "(Required) Order UUID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  },\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "46f9cf0c-ba53-41d8-9eee-936a6c707f51",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "order",
+                    ":order_uuid",
+                    "checkout"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_uuid",
+                      "description": "(Required) Order UUID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  },\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4886934b-2b7e-488a-8bd1-986d0161abb3",
+              "name": "The specified resource was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "order",
+                    ":order_uuid",
+                    "checkout"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_uuid",
+                      "description": "(Required) Order UUID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  },\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f4de221a-55e2-4e38-a4f7-9454fae22678",
+              "name": "Unable to process the request entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "order",
+                    ":order_uuid",
+                    "checkout"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_uuid",
+                      "description": "(Required) Order UUID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  },\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sandbox.gateway.sezzle.com/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "2af65867-e30f-457d-80f1-65e56be9d5e0",
+    "name": "Sezzle API v2 Bearer Authentication Order API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This Sezzle API is for merchants who want to accept Sezzle as a payment option",
+      "type": "text/plain"
+    }
+  }
+}

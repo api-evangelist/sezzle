@@ -1,0 +1,60 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sezzle API v2 Bearer Authentication Session API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Session",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a new session",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.gateway.sezzle.com/v2/session",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create new customer checkout and/or tokenize customer."
+        },
+        {
+          "info": {
+            "name": "Get session status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.gateway.sezzle.com/v2/session/:session_uuid",
+            "params": [
+              {
+                "name": "session_uuid",
+                "value": "",
+                "type": "path",
+                "description": "Session UUID"
+              }
+            ]
+          },
+          "docs": "Get session status"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

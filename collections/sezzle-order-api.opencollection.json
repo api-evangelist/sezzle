@@ -1,0 +1,232 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sezzle API v2 Bearer Authentication Order API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Order",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get order details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.gateway.sezzle.com/v2/order/:order_uuid",
+            "params": [
+              {
+                "name": "order_uuid",
+                "value": "",
+                "type": "path",
+                "description": "Order UUID"
+              }
+            ]
+          },
+          "docs": "Get order details"
+        },
+        {
+          "info": {
+            "name": "Update order",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://sandbox.gateway.sezzle.com/v2/order/:order_uuid",
+            "params": [
+              {
+                "name": "order_uuid",
+                "value": "",
+                "type": "path",
+                "description": "Order UUID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update order"
+        },
+        {
+          "info": {
+            "name": "Release amount by order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.gateway.sezzle.com/v2/order/:order_uuid/release",
+            "headers": [
+              {
+                "name": "Sezzle-Request-Id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "order_uuid",
+                "value": "",
+                "type": "path",
+                "description": "Order UUID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Release amount by order"
+        },
+        {
+          "info": {
+            "name": "Capture amount by order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.gateway.sezzle.com/v2/order/:order_uuid/capture",
+            "headers": [
+              {
+                "name": "Sezzle-Request-Id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "order_uuid",
+                "value": "",
+                "type": "path",
+                "description": "Order UUID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Capture amount by order"
+        },
+        {
+          "info": {
+            "name": "Refund amount by order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.gateway.sezzle.com/v2/order/:order_uuid/refund",
+            "headers": [
+              {
+                "name": "Sezzle-Request-Id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "order_uuid",
+                "value": "",
+                "type": "path",
+                "description": "Order UUID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Refund amount by order"
+        },
+        {
+          "info": {
+            "name": "Reauthorize amount by order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.gateway.sezzle.com/v2/order/:order_uuid/reauthorize",
+            "headers": [
+              {
+                "name": "Sezzle-Request-Id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "order_uuid",
+                "value": "",
+                "type": "path",
+                "description": "Order UUID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "- Allowed once the original order authorization has expired\n- Response will be a new order and its `uuid` can be used on the Order API endpoints\n"
+        },
+        {
+          "info": {
+            "name": "Upcharge amount by order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.gateway.sezzle.com/v2/order/:order_uuid/upcharge",
+            "headers": [
+              {
+                "name": "Sezzle-Request-Id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "order_uuid",
+                "value": "",
+                "type": "path",
+                "description": "Order UUID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Charges an additional amount against an existing order by creating a new standalone Pay In Full order\nfor the original shopper. The upcharge order is independent from the parent for capture, refund, and\nsettlement -- the parent order is not released or modified.\n\n- The currency of the upcharge must match the currency of the original order.\n- The cumulative total of all upcharges on a given parent order must not exceed 15% of the parent order amount.\n- The returned `uuid` is the new upcharge orde"
+        },
+        {
+          "info": {
+            "name": "Delete checkout by order",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://sandbox.gateway.sezzle.com/v2/order/:order_uuid/checkout",
+            "params": [
+              {
+                "name": "order_uuid",
+                "value": "",
+                "type": "path",
+                "description": "Order UUID"
+              }
+            ]
+          },
+          "docs": "Delete checkout by order"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

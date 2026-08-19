@@ -1,0 +1,695 @@
+{
+  "item": [
+    {
+      "id": "a9961328-16d7-4f92-97a5-db8777375c1c",
+      "name": "Reports",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5d45cb13-9b30-4ca0-bd4c-43d77601f696",
+          "name": "Settlement Summaries",
+          "request": {
+            "name": "Settlement Summaries",
+            "description": {},
+            "url": {
+              "path": [
+                "settlements",
+                "summaries"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "start-date",
+                  "value": "<yyyy-mm-dd>",
+                  "description": "(Required) Start Date"
+                },
+                {
+                  "disabled": false,
+                  "key": "end-date",
+                  "value": "<yyyy-mm-dd>",
+                  "description": "End Date"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<int32>",
+                  "description": "Pagination Offset (Limit 20)"
+                },
+                {
+                  "disabled": false,
+                  "key": "currency-code",
+                  "value": "<string>",
+                  "description": "ISO-4217 Currency Code"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e887e640-b83f-4b10-810e-7ae8d244efa7",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "settlements",
+                    "summaries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start-date",
+                      "value": "<yyyy-mm-dd>"
+                    },
+                    {
+                      "key": "end-date",
+                      "value": "<yyyy-mm-dd>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<int32>"
+                    },
+                    {
+                      "key": "currency-code",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"uuid\": \"string\",\n    \"payout_currency\": \"string\",\n    \"payout_date\": \"1967-02-14T03:28:01.103Z\",\n    \"net_settlement_amount\": 9865.479089286038,\n    \"forex_fees\": 7452,\n    \"status\": \"string\"\n  },\n  {\n    \"uuid\": \"string\",\n    \"payout_currency\": \"string\",\n    \"payout_date\": \"1996-06-29T03:53:40.611Z\",\n    \"net_settlement_amount\": 8891.54853486397,\n    \"forex_fees\": 8330,\n    \"status\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "995181d2-619f-4e66-b574-e50483cbdab2",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "settlements",
+                    "summaries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start-date",
+                      "value": "<yyyy-mm-dd>"
+                    },
+                    {
+                      "key": "end-date",
+                      "value": "<yyyy-mm-dd>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<int32>"
+                    },
+                    {
+                      "key": "currency-code",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  },\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "18e320ea-56f7-4b3e-8cb9-363d40b4a4de",
+          "name": "Settlement Details",
+          "request": {
+            "name": "Settlement Details",
+            "description": {},
+            "url": {
+              "path": [
+                "settlements",
+                "details",
+                ":payout_uuid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "payout_uuid",
+                  "description": "(Required) Payout UUID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/csv"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c0ed3b63-fed9-4261-92f1-efc50fde121b",
+              "name": "CSV file",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "settlements",
+                    "details",
+                    ":payout_uuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "payout_uuid",
+                      "description": "(Required) Payout UUID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/csv"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/csv"
+                }
+              ],
+              "body": "total_order_amount,total_capture_amount,total_refund_amount,total_fee_amount,total_returned_fee_amount,total_chargeback_amount,total_chargeback_reversal_amount,total_interest_transfer_amount,total_correction_amount,total_referral_revenue_transfer_amount,total_bank_account_withdrawals,total_bank_account_withdrawal_reversals,forex_fees,net_settlement_amount,payment_uuid,settlement_currency,payout_date,payout_status,final_payout_amount,payout_currency 703.20,703.20,-5.00,-43.80,.30,0.00,0.00,-4.30,1.71,10.00,100.00,-100.00,0.00,668.61,a5c13qt1-4126-41d3-2fq8-9ca431f51431,USD,2019-11-02 00:00:00 +0000 UTC,Complete,668.61,USD type,order_capture_date,order_created_at,event_date,order_uuid,customer_order_id,external_reference_id,order_amount,amount,posting_currency,type_code,chargeback_code,sezzle_order_id ORDER,2019-11-01T19:09:50Z,2019-11-01T19:09:50Z,2019-10-22T19:09:50Z,bm99f-31vu1-kg00e-rae1g,1,12345,500.00,,USD,001,,66d78e86-fd96-4266-9217-b769c102a0a0 ORDER,2019-11-01T19:09:50Z,2019-11-01T19:09:50Z,2019-10-22T19:09:50Z,va13d-474s9-3000e-nungg,13,12346,200.00,,USD,001,,5e0d4886-8c3d-4d4e-901a-2046a06c1e0f ORDER,2019-11-01T20:00:01Z,2019-11-01T00:00:01Z,2019-11-01T00:00:01Z,as41g-4v4s9-3000e-nunh0,1,12347,1.40,,USD,001,,a2c1a142-96ad-48c9-93d2-1acaaee9f073 ORDER,2019-11-01T20:00:01Z,2019-11-01T20:00:01Z,2019-11-01T20:00:01Z,as62l-5ptqs-9g00e-pvk10,2,12348,1.80,,USD,001,,3f62dcba-f5a4-41be-ad8f-53e938b5f310 CAPTURE,2019-11-01T20:00:01Z,2019-11-01T20:00:01Z,2019-11-01T20:00:01Z,as62l-5ptqs-9g00e-pvk10,2,12348,,1.80,USD,001,,3f62dcba-f5a4-41be-ad8f-53e938b5f310 FEE,2019-11-01T19:09:50Z,2019-11-01T19:09:50Z,2019-11-01T19:09:50Z,bm99f-31vu1-kg00e-rae1g,1,12345,,-30.00,USD,003,,66d78e86-fd96-4266-9217-b769c102a0a0 FEE,2019-11-01T19:09:50Z,2019-11-01T19:09:50Z,2019-11-01T19:09:50Z,va13d-474s9-3000e-nungg,13,12346,,-12.00,USD,003,,5e0d4886-8c3d-4d4e-901a-2046a06c1e0f FEE,2019-11-01T20:00:01Z,2019-11-01T00:00:01Z,2019-11-01T20:00:01Z,as41g-4v4s9-3000e-nunh0,1,12347,,-1.20,USD,003,,a2c1a142-96ad-48c9-93d2-1acaaee9f073 FEE,2019-11-01T20:00:01Z,2019-11-01T20:00:01Z,2019-11-01T20:00:01Z,as62l-5ptqs-9g00e-pvk10,2,12348,,-0.60,USD,003,,3f62dcba-f5a4-41be-ad8f-53e938b5f310 REFUND,2019-10-22T19:09:50Z,2019-10-22T19:09:50Z,2019-11-01T19:09:50Z,bm5rm-vg2js-1tsky-c2dsky,8,12344,,5.00,USD,002,,e4194956-de70-4958-9da4-6c05f276fdab RETURNED_FEE,2019-10-22T19:09:50Z,2019-10-22T19:09:50Z,2019-11-01T19:09:50Z,bm5rm-vg2js-1tsky-c2dsky,7,12344,,.30,USD,004,,e4194956-de70-4958-9da4-6c05f276fdab CORRECTION,,,2019-11-01T17:00:01Z,,,,,-1.29,,007, CORRECTION,,,2019-11-01T17:00:01Z,,,,,3.00,,007, INTEREST_TRANSFER,,,2019-11-01T18:00:01Z,,,,,-4.30,,008, REFERRAL_REVENUE_TRANSFER,,,2019-11-01T15:00:01Z,,,,,10.00,,009, BANK_ACCOUNT_WITHDRAWAL,,,2019-11-02T00:05:00Z,,,,,100.00,,010, BANK_ACCOUNT_WITHDRAWAL_REVERSAL,,,2019-11-02T00:05:00Z,,,,,-100.00,,011, MONTHLY_FEE,,,2019-11-01T00:00:00Z,,,,,-15.00,USD,013, MONTHLY_FEE_REFUND,,,2019-11-01T00:00:00Z,,,,,15.00,USD,014,\n",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e1bebd21-0de4-434d-b088-0a4328143c9d",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "settlements",
+                    "details",
+                    ":payout_uuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "payout_uuid",
+                      "description": "(Required) Payout UUID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  },\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8dab953a-f97f-4a15-ab29-7ac47206fce1",
+          "name": "Interest Account Balance",
+          "request": {
+            "name": "Interest Account Balance",
+            "description": {},
+            "url": {
+              "path": [
+                "interest",
+                "balance"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "currency-code",
+                  "value": "<string>",
+                  "description": "ISO-4217 Currency Code"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3d595c40-ed87-4f9c-a0aa-2c649d5f151e",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "interest",
+                    "balance"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "currency-code",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"interest_balance\": 3837.804505146445\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6fd522f3-304a-4341-b252-781ebdf53a5d",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "interest",
+                    "balance"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "currency-code",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  },\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "df3df63d-7083-4fdf-8fb7-f1a0ca321b8c",
+          "name": "Interest Account Activity",
+          "request": {
+            "name": "Interest Account Activity",
+            "description": {},
+            "url": {
+              "path": [
+                "interest",
+                "activity"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "start-date",
+                  "value": "<yyyy-mm-dd>",
+                  "description": "(Required) Start Date"
+                },
+                {
+                  "disabled": false,
+                  "key": "end-date",
+                  "value": "<yyyy-mm-dd>",
+                  "description": "End Date"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<int32>",
+                  "description": "Pagination Offset (Limit 20)"
+                },
+                {
+                  "disabled": false,
+                  "key": "currency-code",
+                  "value": "<string>",
+                  "description": "ISO-4217 Currency Code"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/csv"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "daadedb2-ddfa-4513-9b6c-42d3b1d20063",
+              "name": "CSV file",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "interest",
+                    "activity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start-date",
+                      "value": "<yyyy-mm-dd>"
+                    },
+                    {
+                      "key": "end-date",
+                      "value": "<yyyy-mm-dd>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<int32>"
+                    },
+                    {
+                      "key": "currency-code",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/csv"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/csv"
+                }
+              ],
+              "body": "type,event_date,interest_account_change_amount,interest_account_balance_after_change INTEREST_PAYOUT,2019-12-21T19:10:00Z,122.8718,5101.4676 INTEREST_WITHDRAWAL,2019-12-21T19:20:00Z,-26.1000,5075.3676 INTEREST_ACCRUAL,2019-12-21T19:15:00Z,1.0702,5182.3922 INTEREST_ACCRUAL,2019-12-22T19:15:00Z,1.0702,5183.4624\n",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "79ad1281-a23c-43f9-87f1-d7682a0deb9d",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "interest",
+                    "activity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start-date",
+                      "value": "<yyyy-mm-dd>"
+                    },
+                    {
+                      "key": "end-date",
+                      "value": "<yyyy-mm-dd>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<int32>"
+                    },
+                    {
+                      "key": "currency-code",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  },\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sandbox.gateway.sezzle.com/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "bb9cd5fd-ba09-401d-a8ec-250914343457",
+    "name": "Sezzle API v2 Bearer Authentication Reports API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This Sezzle API is for merchants who want to accept Sezzle as a payment option",
+      "type": "text/plain"
+    }
+  }
+}

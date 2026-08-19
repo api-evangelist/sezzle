@@ -1,0 +1,64 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sezzle API v2 Bearer Authentication Token API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Token",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get session token",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.gateway.sezzle.com/v2/token/:token/session",
+            "params": [
+              {
+                "name": "token",
+                "value": "",
+                "type": "path",
+                "description": "Merchant initiated token"
+              }
+            ]
+          },
+          "docs": "Get session token"
+        },
+        {
+          "info": {
+            "name": "Get customer token",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.gateway.sezzle.com/v2/token/:token/customer",
+            "params": [
+              {
+                "name": "token",
+                "value": "",
+                "type": "path",
+                "description": "Customer initiated token, e.g. generated in mobile app"
+              }
+            ]
+          },
+          "docs": "Get customer token"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

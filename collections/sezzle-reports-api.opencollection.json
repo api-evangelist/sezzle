@@ -1,0 +1,138 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sezzle API v2 Bearer Authentication Reports API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Reports",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Settlement Summaries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.gateway.sezzle.com/v2/settlements/summaries",
+            "params": [
+              {
+                "name": "start-date",
+                "value": "",
+                "type": "query",
+                "description": "Start Date"
+              },
+              {
+                "name": "end-date",
+                "value": "",
+                "type": "query",
+                "description": "End Date"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Pagination Offset (Limit 20)"
+              },
+              {
+                "name": "currency-code",
+                "value": "",
+                "type": "query",
+                "description": "ISO-4217 Currency Code"
+              }
+            ]
+          },
+          "docs": "Settlement Summaries"
+        },
+        {
+          "info": {
+            "name": "Settlement Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.gateway.sezzle.com/v2/settlements/details/:payout_uuid",
+            "params": [
+              {
+                "name": "payout_uuid",
+                "value": "",
+                "type": "path",
+                "description": "Payout UUID"
+              }
+            ]
+          },
+          "docs": "Settlement Details"
+        },
+        {
+          "info": {
+            "name": "Interest Account Balance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.gateway.sezzle.com/v2/interest/balance",
+            "params": [
+              {
+                "name": "currency-code",
+                "value": "",
+                "type": "query",
+                "description": "ISO-4217 Currency Code"
+              }
+            ]
+          },
+          "docs": "Interest Account Balance"
+        },
+        {
+          "info": {
+            "name": "Interest Account Activity",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.gateway.sezzle.com/v2/interest/activity",
+            "params": [
+              {
+                "name": "start-date",
+                "value": "",
+                "type": "query",
+                "description": "Start Date"
+              },
+              {
+                "name": "end-date",
+                "value": "",
+                "type": "query",
+                "description": "End Date"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Pagination Offset (Limit 20)"
+              },
+              {
+                "name": "currency-code",
+                "value": "",
+                "type": "query",
+                "description": "ISO-4217 Currency Code"
+              }
+            ]
+          },
+          "docs": "Interest Account Activity"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

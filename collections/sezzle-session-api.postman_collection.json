@@ -1,0 +1,550 @@
+{
+  "item": [
+    {
+      "id": "72b87840-6e17-46c4-841d-6b5cb28e6a8d",
+      "name": "Session",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ae2582dc-9072-4e75-9be1-f0a8f07b8c64",
+          "name": "Create a new session",
+          "request": {
+            "name": "Create a new session",
+            "description": {
+              "content": "Create new customer checkout and/or tokenize customer.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "session"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cancel_url\": {\n    \"href\": \"<string>\",\n    \"method\": \"<string>\"\n  },\n  \"complete_url\": {\n    \"href\": \"<string>\",\n    \"method\": \"<string>\"\n  },\n  \"customer\": {\n    \"tokenize\": \"<boolean>\",\n    \"email\": \"<string>\",\n    \"first_name\": \"<string>\",\n    \"last_name\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"dob\": \"<string>\",\n    \"token_expiration\": \"<dateTime>\",\n    \"billing_address\": {\n      \"city\": \"<string>\",\n      \"country_code\": \"<string>\",\n      \"postal_code\": \"<string>\",\n      \"state\": \"<string>\",\n      \"street\": \"<string>\",\n      \"name\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"street2\": \"<string>\"\n    },\n    \"shipping_address\": {\n      \"city\": \"<string>\",\n      \"country_code\": \"<string>\",\n      \"postal_code\": \"<string>\",\n      \"state\": \"<string>\",\n      \"street\": \"<string>\",\n      \"name\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"street2\": \"<string>\"\n    }\n  },\n  \"order\": {\n    \"intent\": \"<string>\",\n    \"reference_id\": \"<string>\",\n    \"description\": \"<string>\",\n    \"requires_shipping_info\": \"<boolean>\",\n    \"items\": [\n      {\n        \"name\": \"<string>\",\n        \"price\": {\n          \"amount_in_cents\": \"<integer>\",\n          \"currency\": \"<string>\"\n        },\n        \"quantity\": \"<integer>\",\n        \"sku\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"price\": {\n          \"amount_in_cents\": \"<integer>\",\n          \"currency\": \"<string>\"\n        },\n        \"quantity\": \"<integer>\",\n        \"sku\": \"<string>\"\n      }\n    ],\n    \"discounts\": [\n      {\n        \"amount\": {\n          \"amount_in_cents\": \"<integer>\",\n          \"currency\": \"<string>\"\n        },\n        \"name\": \"<string>\"\n      },\n      {\n        \"amount\": {\n          \"amount_in_cents\": \"<integer>\",\n          \"currency\": \"<string>\"\n        },\n        \"name\": \"<string>\"\n      }\n    ],\n    \"metadata\": {\n      \"key_0\": \"<string>\"\n    },\n    \"shipping_amount\": {\n      \"amount_in_cents\": \"<integer>\",\n      \"currency\": \"<string>\"\n    },\n    \"tax_amount\": {\n      \"amount_in_cents\": \"<integer>\",\n      \"currency\": \"<string>\"\n    },\n    \"checkout_expiration\": \"<dateTime>\",\n    \"order_amount\": {\n      \"amount_in_cents\": \"<integer>\",\n      \"currency\": \"<string>\"\n    },\n    \"checkout_financing_options\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"send_checkout_url\": {\n      \"to_sms_phone\": \"<string>\",\n      \"to_email\": \"<string>\",\n      \"language\": \"<string>\"\n    },\n    \"locale\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "eae11378-a0df-4443-9ed1-cbe4bdab9511",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "session"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cancel_url\": {\n    \"href\": \"<string>\",\n    \"method\": \"<string>\"\n  },\n  \"complete_url\": {\n    \"href\": \"<string>\",\n    \"method\": \"<string>\"\n  },\n  \"customer\": {\n    \"tokenize\": \"<boolean>\",\n    \"email\": \"<string>\",\n    \"first_name\": \"<string>\",\n    \"last_name\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"dob\": \"<string>\",\n    \"token_expiration\": \"<dateTime>\",\n    \"billing_address\": {\n      \"city\": \"<string>\",\n      \"country_code\": \"<string>\",\n      \"postal_code\": \"<string>\",\n      \"state\": \"<string>\",\n      \"street\": \"<string>\",\n      \"name\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"street2\": \"<string>\"\n    },\n    \"shipping_address\": {\n      \"city\": \"<string>\",\n      \"country_code\": \"<string>\",\n      \"postal_code\": \"<string>\",\n      \"state\": \"<string>\",\n      \"street\": \"<string>\",\n      \"name\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"street2\": \"<string>\"\n    }\n  },\n  \"order\": {\n    \"intent\": \"<string>\",\n    \"reference_id\": \"<string>\",\n    \"description\": \"<string>\",\n    \"requires_shipping_info\": \"<boolean>\",\n    \"items\": [\n      {\n        \"name\": \"<string>\",\n        \"price\": {\n          \"amount_in_cents\": \"<integer>\",\n          \"currency\": \"<string>\"\n        },\n        \"quantity\": \"<integer>\",\n        \"sku\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"price\": {\n          \"amount_in_cents\": \"<integer>\",\n          \"currency\": \"<string>\"\n        },\n        \"quantity\": \"<integer>\",\n        \"sku\": \"<string>\"\n      }\n    ],\n    \"discounts\": [\n      {\n        \"amount\": {\n          \"amount_in_cents\": \"<integer>\",\n          \"currency\": \"<string>\"\n        },\n        \"name\": \"<string>\"\n      },\n      {\n        \"amount\": {\n          \"amount_in_cents\": \"<integer>\",\n          \"currency\": \"<string>\"\n        },\n        \"name\": \"<string>\"\n      }\n    ],\n    \"metadata\": {\n      \"key_0\": \"<string>\"\n    },\n    \"shipping_amount\": {\n      \"amount_in_cents\": \"<integer>\",\n      \"currency\": \"<string>\"\n    },\n    \"tax_amount\": {\n      \"amount_in_cents\": \"<integer>\",\n      \"currency\": \"<string>\"\n    },\n    \"checkout_expiration\": \"<dateTime>\",\n    \"order_amount\": {\n      \"amount_in_cents\": \"<integer>\",\n      \"currency\": \"<string>\"\n    },\n    \"checkout_financing_options\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"send_checkout_url\": {\n      \"to_sms_phone\": \"<string>\",\n      \"to_email\": \"<string>\",\n      \"language\": \"<string>\"\n    },\n    \"locale\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"uuid\": \"string\",\n  \"links\": [\n    {\n      \"href\": \"string\",\n      \"method\": \"string\",\n      \"rel\": \"string\"\n    },\n    {\n      \"href\": \"string\",\n      \"method\": \"string\",\n      \"rel\": \"string\"\n    }\n  ],\n  \"order\": {\n    \"uuid\": \"string\",\n    \"checkout_url\": \"string\",\n    \"links\": [\n      {\n        \"href\": \"string\",\n        \"method\": \"string\",\n        \"rel\": \"string\"\n      },\n      {\n        \"href\": \"string\",\n        \"method\": \"string\",\n        \"rel\": \"string\"\n      }\n    ]\n  },\n  \"tokenize\": {\n    \"token\": \"string\",\n    \"expiration\": \"1995-03-05T07:12:22.145Z\",\n    \"links\": [\n      {\n        \"href\": \"string\",\n        \"method\": \"string\",\n        \"rel\": \"string\"\n      },\n      {\n        \"href\": \"string\",\n        \"method\": \"string\",\n        \"rel\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "af6af88c-b50d-457b-8b27-709a7693be89",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "session"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cancel_url\": {\n    \"href\": \"<string>\",\n    \"method\": \"<string>\"\n  },\n  \"complete_url\": {\n    \"href\": \"<string>\",\n    \"method\": \"<string>\"\n  },\n  \"customer\": {\n    \"tokenize\": \"<boolean>\",\n    \"email\": \"<string>\",\n    \"first_name\": \"<string>\",\n    \"last_name\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"dob\": \"<string>\",\n    \"token_expiration\": \"<dateTime>\",\n    \"billing_address\": {\n      \"city\": \"<string>\",\n      \"country_code\": \"<string>\",\n      \"postal_code\": \"<string>\",\n      \"state\": \"<string>\",\n      \"street\": \"<string>\",\n      \"name\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"street2\": \"<string>\"\n    },\n    \"shipping_address\": {\n      \"city\": \"<string>\",\n      \"country_code\": \"<string>\",\n      \"postal_code\": \"<string>\",\n      \"state\": \"<string>\",\n      \"street\": \"<string>\",\n      \"name\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"street2\": \"<string>\"\n    }\n  },\n  \"order\": {\n    \"intent\": \"<string>\",\n    \"reference_id\": \"<string>\",\n    \"description\": \"<string>\",\n    \"requires_shipping_info\": \"<boolean>\",\n    \"items\": [\n      {\n        \"name\": \"<string>\",\n        \"price\": {\n          \"amount_in_cents\": \"<integer>\",\n          \"currency\": \"<string>\"\n        },\n        \"quantity\": \"<integer>\",\n        \"sku\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"price\": {\n          \"amount_in_cents\": \"<integer>\",\n          \"currency\": \"<string>\"\n        },\n        \"quantity\": \"<integer>\",\n        \"sku\": \"<string>\"\n      }\n    ],\n    \"discounts\": [\n      {\n        \"amount\": {\n          \"amount_in_cents\": \"<integer>\",\n          \"currency\": \"<string>\"\n        },\n        \"name\": \"<string>\"\n      },\n      {\n        \"amount\": {\n          \"amount_in_cents\": \"<integer>\",\n          \"currency\": \"<string>\"\n        },\n        \"name\": \"<string>\"\n      }\n    ],\n    \"metadata\": {\n      \"key_0\": \"<string>\"\n    },\n    \"shipping_amount\": {\n      \"amount_in_cents\": \"<integer>\",\n      \"currency\": \"<string>\"\n    },\n    \"tax_amount\": {\n      \"amount_in_cents\": \"<integer>\",\n      \"currency\": \"<string>\"\n    },\n    \"checkout_expiration\": \"<dateTime>\",\n    \"order_amount\": {\n      \"amount_in_cents\": \"<integer>\",\n      \"currency\": \"<string>\"\n    },\n    \"checkout_financing_options\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"send_checkout_url\": {\n      \"to_sms_phone\": \"<string>\",\n      \"to_email\": \"<string>\",\n      \"language\": \"<string>\"\n    },\n    \"locale\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  },\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ab4a0d80-3a5d-4b2e-bfe9-e9d12c3db8f1",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "session"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cancel_url\": {\n    \"href\": \"<string>\",\n    \"method\": \"<string>\"\n  },\n  \"complete_url\": {\n    \"href\": \"<string>\",\n    \"method\": \"<string>\"\n  },\n  \"customer\": {\n    \"tokenize\": \"<boolean>\",\n    \"email\": \"<string>\",\n    \"first_name\": \"<string>\",\n    \"last_name\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"dob\": \"<string>\",\n    \"token_expiration\": \"<dateTime>\",\n    \"billing_address\": {\n      \"city\": \"<string>\",\n      \"country_code\": \"<string>\",\n      \"postal_code\": \"<string>\",\n      \"state\": \"<string>\",\n      \"street\": \"<string>\",\n      \"name\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"street2\": \"<string>\"\n    },\n    \"shipping_address\": {\n      \"city\": \"<string>\",\n      \"country_code\": \"<string>\",\n      \"postal_code\": \"<string>\",\n      \"state\": \"<string>\",\n      \"street\": \"<string>\",\n      \"name\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"street2\": \"<string>\"\n    }\n  },\n  \"order\": {\n    \"intent\": \"<string>\",\n    \"reference_id\": \"<string>\",\n    \"description\": \"<string>\",\n    \"requires_shipping_info\": \"<boolean>\",\n    \"items\": [\n      {\n        \"name\": \"<string>\",\n        \"price\": {\n          \"amount_in_cents\": \"<integer>\",\n          \"currency\": \"<string>\"\n        },\n        \"quantity\": \"<integer>\",\n        \"sku\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"price\": {\n          \"amount_in_cents\": \"<integer>\",\n          \"currency\": \"<string>\"\n        },\n        \"quantity\": \"<integer>\",\n        \"sku\": \"<string>\"\n      }\n    ],\n    \"discounts\": [\n      {\n        \"amount\": {\n          \"amount_in_cents\": \"<integer>\",\n          \"currency\": \"<string>\"\n        },\n        \"name\": \"<string>\"\n      },\n      {\n        \"amount\": {\n          \"amount_in_cents\": \"<integer>\",\n          \"currency\": \"<string>\"\n        },\n        \"name\": \"<string>\"\n      }\n    ],\n    \"metadata\": {\n      \"key_0\": \"<string>\"\n    },\n    \"shipping_amount\": {\n      \"amount_in_cents\": \"<integer>\",\n      \"currency\": \"<string>\"\n    },\n    \"tax_amount\": {\n      \"amount_in_cents\": \"<integer>\",\n      \"currency\": \"<string>\"\n    },\n    \"checkout_expiration\": \"<dateTime>\",\n    \"order_amount\": {\n      \"amount_in_cents\": \"<integer>\",\n      \"currency\": \"<string>\"\n    },\n    \"checkout_financing_options\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"send_checkout_url\": {\n      \"to_sms_phone\": \"<string>\",\n      \"to_email\": \"<string>\",\n      \"language\": \"<string>\"\n    },\n    \"locale\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  },\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "275b92b4-0122-413a-bcfc-cb7079b41009",
+              "name": "Unable to process the request entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "session"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cancel_url\": {\n    \"href\": \"<string>\",\n    \"method\": \"<string>\"\n  },\n  \"complete_url\": {\n    \"href\": \"<string>\",\n    \"method\": \"<string>\"\n  },\n  \"customer\": {\n    \"tokenize\": \"<boolean>\",\n    \"email\": \"<string>\",\n    \"first_name\": \"<string>\",\n    \"last_name\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"dob\": \"<string>\",\n    \"token_expiration\": \"<dateTime>\",\n    \"billing_address\": {\n      \"city\": \"<string>\",\n      \"country_code\": \"<string>\",\n      \"postal_code\": \"<string>\",\n      \"state\": \"<string>\",\n      \"street\": \"<string>\",\n      \"name\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"street2\": \"<string>\"\n    },\n    \"shipping_address\": {\n      \"city\": \"<string>\",\n      \"country_code\": \"<string>\",\n      \"postal_code\": \"<string>\",\n      \"state\": \"<string>\",\n      \"street\": \"<string>\",\n      \"name\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"street2\": \"<string>\"\n    }\n  },\n  \"order\": {\n    \"intent\": \"<string>\",\n    \"reference_id\": \"<string>\",\n    \"description\": \"<string>\",\n    \"requires_shipping_info\": \"<boolean>\",\n    \"items\": [\n      {\n        \"name\": \"<string>\",\n        \"price\": {\n          \"amount_in_cents\": \"<integer>\",\n          \"currency\": \"<string>\"\n        },\n        \"quantity\": \"<integer>\",\n        \"sku\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"price\": {\n          \"amount_in_cents\": \"<integer>\",\n          \"currency\": \"<string>\"\n        },\n        \"quantity\": \"<integer>\",\n        \"sku\": \"<string>\"\n      }\n    ],\n    \"discounts\": [\n      {\n        \"amount\": {\n          \"amount_in_cents\": \"<integer>\",\n          \"currency\": \"<string>\"\n        },\n        \"name\": \"<string>\"\n      },\n      {\n        \"amount\": {\n          \"amount_in_cents\": \"<integer>\",\n          \"currency\": \"<string>\"\n        },\n        \"name\": \"<string>\"\n      }\n    ],\n    \"metadata\": {\n      \"key_0\": \"<string>\"\n    },\n    \"shipping_amount\": {\n      \"amount_in_cents\": \"<integer>\",\n      \"currency\": \"<string>\"\n    },\n    \"tax_amount\": {\n      \"amount_in_cents\": \"<integer>\",\n      \"currency\": \"<string>\"\n    },\n    \"checkout_expiration\": \"<dateTime>\",\n    \"order_amount\": {\n      \"amount_in_cents\": \"<integer>\",\n      \"currency\": \"<string>\"\n    },\n    \"checkout_financing_options\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"send_checkout_url\": {\n      \"to_sms_phone\": \"<string>\",\n      \"to_email\": \"<string>\",\n      \"language\": \"<string>\"\n    },\n    \"locale\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  },\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a37aff09-833d-48b0-abbd-f188f1a984ff",
+          "name": "Get session status",
+          "request": {
+            "name": "Get session status",
+            "description": {},
+            "url": {
+              "path": [
+                "session",
+                ":session_uuid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "session_uuid",
+                  "description": "(Required) Session UUID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5aef1f09-7679-4f2b-bef0-b640e0b0ce09",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "session",
+                    ":session_uuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "session_uuid",
+                      "description": "(Required) Session UUID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"uuid\": \"string\",\n  \"links\": [\n    {\n      \"href\": \"string\",\n      \"method\": \"string\",\n      \"rel\": \"string\"\n    },\n    {\n      \"href\": \"string\",\n      \"method\": \"string\",\n      \"rel\": \"string\"\n    }\n  ],\n  \"order\": {\n    \"intent\": \"<string>\",\n    \"uuid\": \"string\",\n    \"checkout_url\": \"string\",\n    \"links\": [\n      {\n        \"href\": \"string\",\n        \"method\": \"string\",\n        \"rel\": \"string\"\n      },\n      {\n        \"href\": \"string\",\n        \"method\": \"string\",\n        \"rel\": \"string\"\n      }\n    ]\n  },\n  \"tokenize\": {\n    \"token\": \"string\",\n    \"expiration\": \"1964-07-25T07:06:12.803Z\",\n    \"links\": [\n      {\n        \"href\": \"string\",\n        \"method\": \"string\",\n        \"rel\": \"string\"\n      },\n      {\n        \"href\": \"string\",\n        \"method\": \"string\",\n        \"rel\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "71d0dc46-5ab7-48e1-9230-1059b9684aa5",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "session",
+                    ":session_uuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "session_uuid",
+                      "description": "(Required) Session UUID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  },\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9d5df542-d0bc-46fc-b931-1b0223a76b31",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "session",
+                    ":session_uuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "session_uuid",
+                      "description": "(Required) Session UUID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  },\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "31bd9441-2178-47cf-88f6-dc5f88522afe",
+              "name": "The specified resource was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "session",
+                    ":session_uuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "session_uuid",
+                      "description": "(Required) Session UUID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  },\n  {\n    \"code\": \"string\",\n    \"location\": \"string\",\n    \"message\": \"string\",\n    \"debug_uuid\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sandbox.gateway.sezzle.com/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "8e323801-b0a1-481e-a9c1-51d0b12339a4",
+    "name": "Sezzle API v2 Bearer Authentication Session API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This Sezzle API is for merchants who want to accept Sezzle as a payment option",
+      "type": "text/plain"
+    }
+  }
+}
