@@ -239,6 +239,8 @@ apis:
     url: >-
       https://raw.githubusercontent.com/api-evangelist/sezzle/refs/heads/main/finops/finops.yml
 common:
+  - type: Website
+    url: https://www.sezzle.com/
   - type: AgenticAccess
     url: agentic-access/sezzle-agentic-access.yml
   - type: VulnerabilityDisclosure
