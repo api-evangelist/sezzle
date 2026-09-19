@@ -177,6 +177,8 @@ apis:
   humanURL: https://docs.sezzle.com/docs/api/intro
   baseURL: https://gateway.sezzle.com/v2
   tags:
+  - Sessions
+  tags_raw:
   - Session
   properties:
   - type: OpenAPI
@@ -201,6 +203,8 @@ apis:
   humanURL: https://docs.sezzle.com/docs/api/intro
   baseURL: https://gateway.sezzle.com/v2
   tags:
+  - Tokens
+  tags_raw:
   - Token
   properties:
   - type: OpenAPI
