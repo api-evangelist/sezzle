@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Sezzle API v2 Bearer Authentication Order API
+  title: Sezzle API v2 Order API
   description: This Sezzle API is for merchants who want to accept Sezzle as a payment option
   termsOfService: https://legal.sezzle.com
   version: 2.0.0
@@ -253,9 +253,7 @@ paths:
       summary: Reauthorize amount by order
       description: '- Allowed once the original order authorization has expired
 
-        - Response will be a new order and its `uuid` can be used on the Order API endpoints
-
-        '
+        - Response will be a new order and its `uuid` can be used on the Order API endpoints'
       operationId: postV2ReauthorizeByOrder
       parameters:
       - name: order_uuid
@@ -313,7 +311,24 @@ paths:
       tags:
       - Order
       summary: Upcharge amount by order
-      description: "Charges an additional amount against an existing order by creating a new standalone Pay In Full order\nfor the original shopper. The upcharge order is independent from the parent for capture, refund, and\nsettlement -- the parent order is not released or modified.\n\n- The currency of the upcharge must match the currency of the original order.\n- The cumulative total of all upcharges on a given parent order must not exceed 15% of the parent order amount.\n- The returned `uuid` is the new upcharge order's UUID and can be used with all other Order API endpoints\n  (Get Order, Capture, Refund, etc).\n- The relationship is queryable via Get Order on the new UUID, which returns `is_upcharge: true` and\n  `parent_order_uuid` referencing the original order.\n"
+      description: 'Charges an additional amount against an existing order by creating a new standalone Pay In Full order
+
+        for the original shopper. The upcharge order is independent from the parent for capture, refund, and
+
+        settlement -- the parent order is not released or modified.
+
+
+        - The currency of the upcharge must match the currency of the original order.
+
+        - The cumulative total of all upcharges on a given parent order must not exceed 15% of the parent order amount.
+
+        - The returned `uuid` is the new upcharge order''s UUID and can be used with all other Order API endpoints
+
+        (Get Order, Capture, Refund, etc).
+
+        - The relationship is queryable via Get Order on the new UUID, which returns `is_upcharge: true` and
+
+        `parent_order_uuid` referencing the original order.'
       operationId: postV2UpchargeByOrder
       parameters:
       - name: order_uuid
@@ -397,16 +412,38 @@ paths:
           $ref: '#/components/responses/Unprocessable'
 components:
   schemas:
-    Link:
+    Price:
+      required:
+      - amount_in_cents
+      - currency
       type: object
       properties:
-        href:
+        amount_in_cents:
+          type: integer
+          format: int32
+        currency:
           type: string
-        method:
-          type: string
-        rel:
-          type: string
+    Error:
+      type: array
+      items:
+        type: object
+        properties:
+          code:
+            type: string
+          location:
+            type: string
+          message:
+            type: string
+          debug_uuid:
+            type: string
     Capture:
+      type: object
+      properties:
+        uuid:
+          type: string
+        amount:
+          $ref: '#/components/schemas/Price'
+    Refund:
       type: object
       properties:
         uuid:
@@ -427,11 +464,13 @@ components:
         country_code:
           type: string
         name:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         phone:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         postal_code:
           type: string
         state:
@@ -439,46 +478,23 @@ components:
         street:
           type: string
         street2:
-          type: string
-          nullable: true
-    Customer:
-      type: object
-      properties:
-        email:
-          type: string
-        first_name:
-          type: string
-        last_name:
-          type: string
-        phone:
-          type: string
-        dob:
-          type: string
-        token_expiration:
-          type: string
-          format: date-time
-        billing_address:
-          $ref: '#/components/schemas/Address'
-        shipping_address:
-          $ref: '#/components/schemas/Address'
-    Refund:
+          type:
+          - string
+          - 'null'
+    SessionStatus:
       type: object
       properties:
         uuid:
           type: string
-        amount:
-          $ref: '#/components/schemas/Price'
-    Price:
-      required:
-      - amount_in_cents
-      - currency
-      type: object
-      properties:
-        amount_in_cents:
-          type: integer
-          format: int32
-        currency:
-          type: string
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/Link'
+    Intent:
+      type: string
+      enum:
+      - AUTH
+      - CAPTURE
     CheckoutStatus:
       type: string
       enum:
@@ -486,19 +502,15 @@ components:
       - completed
       - deleted
       - denied
-    Error:
-      type: array
-      items:
-        type: object
-        properties:
-          code:
-            type: string
-          location:
-            type: string
-          message:
-            type: string
-          debug_uuid:
-            type: string
+    Link:
+      type: object
+      properties:
+        href:
+          type: string
+        method:
+          type: string
+        rel:
+          type: string
     OrderAuthorization:
       type: object
       properties:
@@ -531,21 +543,33 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Refund'
-    SessionStatus:
+    Customer:
       type: object
       properties:
-        uuid:
+        email:
           type: string
-        links:
-          type: array
-          items:
-            $ref: '#/components/schemas/Link'
-    Intent:
-      type: string
-      enum:
-      - AUTH
-      - CAPTURE
+        first_name:
+          type: string
+        last_name:
+          type: string
+        phone:
+          type: string
+        dob:
+          type: string
+        token_expiration:
+          type: string
+          format: date-time
+        billing_address:
+          $ref: '#/components/schemas/Address'
+        shipping_address:
+          $ref: '#/components/schemas/Address'
   responses:
+    NotFound:
+      description: The specified resource was not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
     BadRequest:
       description: Invalid request
       content:
@@ -554,12 +578,6 @@ components:
             $ref: '#/components/schemas/Error'
     Unauthorized:
       description: Unauthorized
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: The specified resource was not found
       content:
         application/json:
           schema:

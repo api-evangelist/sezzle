@@ -1,13 +1,7 @@
 {
   "provider": "sezzle",
   "sources": [
-    "sezzle-bearer-authentication-api-openapi.yml",
-    "sezzle-customer-api-openapi.yml",
-    "sezzle-order-api-openapi.yml",
-    "sezzle-reports-api-openapi.yml",
-    "sezzle-session-api-openapi.yml",
-    "sezzle-token-api-openapi.yml",
-    "sezzle-webhooks-api-openapi.yml"
+    "_original/sezzle-v2-openapi.yaml"
   ],
   "outputs": [
     "sezzle-bearer-authentication-api-openapi.yml",
@@ -21,6 +15,25 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "sezzle-v2-openapi.yaml: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
+    "sezzle-v2-openapi.yaml: declared missing tag: Bearer Authentication",
+    "sezzle-v2-openapi.yaml: declared missing tag: Customer",
+    "sezzle-v2-openapi.yaml: declared missing tag: Order",
+    "sezzle-v2-openapi.yaml: declared missing tag: Reports",
+    "sezzle-v2-openapi.yaml: declared missing tag: Session",
+    "sezzle-v2-openapi.yaml: declared missing tag: Token",
+    "sezzle-v2-openapi.yaml: declared missing tag: Webhooks",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "sezzle-bearer-authentication-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "sezzle-customer-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "sezzle-order-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "sezzle-reports-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "sezzle-session-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "sezzle-token-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "sezzle-webhooks-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

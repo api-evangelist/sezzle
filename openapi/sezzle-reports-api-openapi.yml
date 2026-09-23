@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Sezzle API v2 Bearer Authentication Reports API
+  title: Sezzle API v2 Reports API
   description: This Sezzle API is for merchants who want to accept Sezzle as a payment option
   termsOfService: https://legal.sezzle.com
   version: 2.0.0
@@ -150,14 +150,20 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  responses:
-    Unauthorized:
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
+    Error:
+      type: array
+      items:
+        type: object
+        properties:
+          code:
+            type: string
+          location:
+            type: string
+          message:
+            type: string
+          debug_uuid:
+            type: string
     Payout:
       type: array
       items:
@@ -176,19 +182,13 @@ components:
             type: integer
           status:
             type: string
-    Error:
-      type: array
-      items:
-        type: object
-        properties:
-          code:
-            type: string
-          location:
-            type: string
-          message:
-            type: string
-          debug_uuid:
-            type: string
+  responses:
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     Bearer:
       type: apiKey

@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Sezzle API v2 Bearer Authentication Token API
+  title: Sezzle API v2 Token API
   description: This Sezzle API is for merchants who want to accept Sezzle as a payment option
   termsOfService: https://legal.sezzle.com
   version: 2.0.0
@@ -60,16 +60,39 @@ paths:
         '501':
           description: not implemented yet
 components:
+  responses:
+    NotFound:
+      description: The specified resource was not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: Invalid request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
-    Link:
-      type: object
-      properties:
-        href:
-          type: string
-        method:
-          type: string
-        rel:
-          type: string
+    Error:
+      type: array
+      items:
+        type: object
+        properties:
+          code:
+            type: string
+          location:
+            type: string
+          message:
+            type: string
+          debug_uuid:
+            type: string
     Token:
       type: object
       properties:
@@ -94,38 +117,15 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/Link'
-    Error:
-      type: array
-      items:
-        type: object
-        properties:
-          code:
-            type: string
-          location:
-            type: string
-          message:
-            type: string
-          debug_uuid:
-            type: string
-  responses:
-    Unauthorized:
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: Invalid request
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: The specified resource was not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+    Link:
+      type: object
+      properties:
+        href:
+          type: string
+        method:
+          type: string
+        rel:
+          type: string
   securitySchemes:
     Bearer:
       type: apiKey
