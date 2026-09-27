@@ -423,6 +423,13 @@ components:
           format: int32
         currency:
           type: string
+    Capture:
+      type: object
+      properties:
+        uuid:
+          type: string
+        amount:
+          $ref: '#/components/schemas/Price'
     Error:
       type: array
       items:
@@ -436,13 +443,6 @@ components:
             type: string
           debug_uuid:
             type: string
-    Capture:
-      type: object
-      properties:
-        uuid:
-          type: string
-        amount:
-          $ref: '#/components/schemas/Price'
     Refund:
       type: object
       properties:
@@ -450,67 +450,6 @@ components:
           type: string
         amount:
           $ref: '#/components/schemas/Price'
-    Address:
-      required:
-      - city
-      - country_code
-      - postal_code
-      - state
-      - street
-      type: object
-      properties:
-        city:
-          type: string
-        country_code:
-          type: string
-        name:
-          type:
-          - string
-          - 'null'
-        phone:
-          type:
-          - string
-          - 'null'
-        postal_code:
-          type: string
-        state:
-          type: string
-        street:
-          type: string
-        street2:
-          type:
-          - string
-          - 'null'
-    SessionStatus:
-      type: object
-      properties:
-        uuid:
-          type: string
-        links:
-          type: array
-          items:
-            $ref: '#/components/schemas/Link'
-    Intent:
-      type: string
-      enum:
-      - AUTH
-      - CAPTURE
-    CheckoutStatus:
-      type: string
-      enum:
-      - active
-      - completed
-      - deleted
-      - denied
-    Link:
-      type: object
-      properties:
-        href:
-          type: string
-        method:
-          type: string
-        rel:
-          type: string
     OrderAuthorization:
       type: object
       properties:
@@ -563,15 +502,70 @@ components:
           $ref: '#/components/schemas/Address'
         shipping_address:
           $ref: '#/components/schemas/Address'
+    SessionStatus:
+      type: object
+      properties:
+        uuid:
+          type: string
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/Link'
+    Link:
+      type: object
+      properties:
+        href:
+          type: string
+        method:
+          type: string
+        rel:
+          type: string
+    Intent:
+      type: string
+      enum:
+      - AUTH
+      - CAPTURE
+    Address:
+      required:
+      - city
+      - country_code
+      - postal_code
+      - state
+      - street
+      type: object
+      properties:
+        city:
+          type: string
+        country_code:
+          type: string
+        name:
+          type:
+          - string
+          - 'null'
+        phone:
+          type:
+          - string
+          - 'null'
+        postal_code:
+          type: string
+        state:
+          type: string
+        street:
+          type: string
+        street2:
+          type:
+          - string
+          - 'null'
+    CheckoutStatus:
+      type: string
+      enum:
+      - active
+      - completed
+      - deleted
+      - denied
   responses:
-    NotFound:
-      description: The specified resource was not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: Invalid request
+    Unprocessable:
+      description: Unable to process the request entity
       content:
         application/json:
           schema:
@@ -582,8 +576,14 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    Unprocessable:
-      description: Unable to process the request entity
+    BadRequest:
+      description: Invalid request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The specified resource was not found
       content:
         application/json:
           schema:

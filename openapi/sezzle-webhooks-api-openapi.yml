@@ -150,43 +150,16 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  responses:
-    NotFound:
-      description: The specified resource was not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: Invalid request
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unprocessable:
-      description: Unable to process the request entity
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
-    Webhook:
+    WebhookTest:
       required:
       - url
       type: object
       properties:
         url:
           type: string
-        events:
-          type: array
-          items:
-            $ref: '#/components/schemas/WebhookEvent'
+        event:
+          $ref: '#/components/schemas/WebhookEvent'
     Error:
       type: array
       items:
@@ -200,22 +173,6 @@ components:
             type: string
           debug_uuid:
             type: string
-    WebhookTest:
-      required:
-      - url
-      type: object
-      properties:
-        url:
-          type: string
-        event:
-          $ref: '#/components/schemas/WebhookEvent'
-    WebhookEvent:
-      type: string
-      enum:
-      - customer.tokenized
-      - order.authorized
-      - order.captured
-      - order.refunded
     Link:
       type: object
       properties:
@@ -225,6 +182,49 @@ components:
           type: string
         rel:
           type: string
+    WebhookEvent:
+      type: string
+      enum:
+      - customer.tokenized
+      - order.authorized
+      - order.captured
+      - order.refunded
+    Webhook:
+      required:
+      - url
+      type: object
+      properties:
+        url:
+          type: string
+        events:
+          type: array
+          items:
+            $ref: '#/components/schemas/WebhookEvent'
+  responses:
+    Unprocessable:
+      description: Unable to process the request entity
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: Invalid request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The specified resource was not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     Bearer:
       type: apiKey
