@@ -130,85 +130,6 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
-    Price:
-      required:
-      - amount_in_cents
-      - currency
-      type: object
-      properties:
-        amount_in_cents:
-          type: integer
-          format: int32
-        currency:
-          type: string
-    LineItem:
-      required:
-      - name
-      - price
-      - quantity
-      - sku
-      type: object
-      properties:
-        name:
-          type: string
-        price:
-          $ref: '#/components/schemas/Price'
-        quantity:
-          type: integer
-          format: int32
-        sku:
-          type: string
-    Error:
-      type: array
-      items:
-        type: object
-        properties:
-          code:
-            type: string
-          location:
-            type: string
-          message:
-            type: string
-          debug_uuid:
-            type: string
-    Discount:
-      required:
-      - amount
-      - name
-      type: object
-      properties:
-        amount:
-          $ref: '#/components/schemas/Price'
-        name:
-          type: string
-    Order:
-      type: object
-      properties:
-        reference_id:
-          type: string
-        description:
-          type: string
-        requires_shipping_info:
-          type: boolean
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/LineItem'
-        discounts:
-          type: array
-          items:
-            $ref: '#/components/schemas/Discount'
-        metadata:
-          type: object
-          additionalProperties:
-            type: string
-        shipping_amount:
-          $ref: '#/components/schemas/Price'
-        tax_amount:
-          $ref: '#/components/schemas/Price'
-        checkout_expiration:
-          type: string
-          format: date-time
     Customer:
       type: object
       properties:
@@ -229,6 +150,30 @@ components:
           $ref: '#/components/schemas/Address'
         shipping_address:
           $ref: '#/components/schemas/Address'
+    Intent:
+      type: string
+      enum:
+      - AUTH
+      - CAPTURE
+    Error:
+      type: array
+      items:
+        type: object
+        properties:
+          code:
+            type: string
+          location:
+            type: string
+          message:
+            type: string
+          debug_uuid:
+            type: string
+    InstallmentPlan:
+      type: string
+      enum:
+      - 4-pay-biweekly
+      - 4-pay-monthly
+      - 6-pay-monthly
     Address:
       required:
       - city
@@ -260,15 +205,43 @@ components:
           type:
           - string
           - 'null'
-    SessionStatus:
+    Notification:
       type: object
       properties:
-        uuid:
+        to_sms_phone:
           type: string
-        links:
+        to_email:
+          type: string
+        language:
+          type: string
+    Order:
+      type: object
+      properties:
+        reference_id:
+          type: string
+        description:
+          type: string
+        requires_shipping_info:
+          type: boolean
+        items:
           type: array
           items:
-            $ref: '#/components/schemas/Link'
+            $ref: '#/components/schemas/LineItem'
+        discounts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Discount'
+        metadata:
+          type: object
+          additionalProperties:
+            type: string
+        shipping_amount:
+          $ref: '#/components/schemas/Price'
+        tax_amount:
+          $ref: '#/components/schemas/Price'
+        checkout_expiration:
+          type: string
+          format: date-time
     Session:
       required:
       - cancel_url
@@ -318,6 +291,34 @@ components:
                 $ref: '#/components/schemas/Notification'
               locale:
                 type: string
+    LineItem:
+      required:
+      - name
+      - price
+      - quantity
+      - sku
+      type: object
+      properties:
+        name:
+          type: string
+        price:
+          $ref: '#/components/schemas/Price'
+        quantity:
+          type: integer
+          format: int32
+        sku:
+          type: string
+    Price:
+      required:
+      - amount_in_cents
+      - currency
+      type: object
+      properties:
+        amount_in_cents:
+          type: integer
+          format: int32
+        currency:
+          type: string
     Link:
       type: object
       properties:
@@ -327,35 +328,28 @@ components:
           type: string
         rel:
           type: string
-    Intent:
-      type: string
-      enum:
-      - AUTH
-      - CAPTURE
-    Notification:
+    Discount:
+      required:
+      - amount
+      - name
       type: object
       properties:
-        to_sms_phone:
+        amount:
+          $ref: '#/components/schemas/Price'
+        name:
           type: string
-        to_email:
+    SessionStatus:
+      type: object
+      properties:
+        uuid:
           type: string
-        language:
-          type: string
-    InstallmentPlan:
-      type: string
-      enum:
-      - 4-pay-biweekly
-      - 4-pay-monthly
-      - 6-pay-monthly
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/Link'
   responses:
-    Unprocessable:
-      description: Unable to process the request entity
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Unauthorized
+    NotFound:
+      description: The specified resource was not found
       content:
         application/json:
           schema:
@@ -366,8 +360,14 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    NotFound:
-      description: The specified resource was not found
+    Unprocessable:
+      description: Unable to process the request entity
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Unauthorized
       content:
         application/json:
           schema:

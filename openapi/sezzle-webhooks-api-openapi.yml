@@ -151,15 +151,6 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
-    WebhookTest:
-      required:
-      - url
-      type: object
-      properties:
-        url:
-          type: string
-        event:
-          $ref: '#/components/schemas/WebhookEvent'
     Error:
       type: array
       items:
@@ -173,6 +164,22 @@ components:
             type: string
           debug_uuid:
             type: string
+    WebhookEvent:
+      type: string
+      enum:
+      - customer.tokenized
+      - order.authorized
+      - order.captured
+      - order.refunded
+    WebhookTest:
+      required:
+      - url
+      type: object
+      properties:
+        url:
+          type: string
+        event:
+          $ref: '#/components/schemas/WebhookEvent'
     Link:
       type: object
       properties:
@@ -182,13 +189,6 @@ components:
           type: string
         rel:
           type: string
-    WebhookEvent:
-      type: string
-      enum:
-      - customer.tokenized
-      - order.authorized
-      - order.captured
-      - order.refunded
     Webhook:
       required:
       - url
@@ -201,14 +201,8 @@ components:
           items:
             $ref: '#/components/schemas/WebhookEvent'
   responses:
-    Unprocessable:
-      description: Unable to process the request entity
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Unauthorized
+    NotFound:
+      description: The specified resource was not found
       content:
         application/json:
           schema:
@@ -219,8 +213,14 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    NotFound:
-      description: The specified resource was not found
+    Unprocessable:
+      description: Unable to process the request entity
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Unauthorized
       content:
         application/json:
           schema:

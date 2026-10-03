@@ -108,8 +108,8 @@ components:
         rel:
           type: string
   responses:
-    Unauthorized:
-      description: Unauthorized
+    NotFound:
+      description: The specified resource was not found
       content:
         application/json:
           schema:
@@ -120,8 +120,8 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    NotFound:
-      description: The specified resource was not found
+    Unauthorized:
+      description: Unauthorized
       content:
         application/json:
           schema:
