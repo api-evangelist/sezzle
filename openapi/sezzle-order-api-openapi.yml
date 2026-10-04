@@ -412,44 +412,6 @@ paths:
           $ref: '#/components/responses/Unprocessable'
 components:
   schemas:
-    Customer:
-      type: object
-      properties:
-        email:
-          type: string
-        first_name:
-          type: string
-        last_name:
-          type: string
-        phone:
-          type: string
-        dob:
-          type: string
-        token_expiration:
-          type: string
-          format: date-time
-        billing_address:
-          $ref: '#/components/schemas/Address'
-        shipping_address:
-          $ref: '#/components/schemas/Address'
-    Intent:
-      type: string
-      enum:
-      - AUTH
-      - CAPTURE
-    Error:
-      type: array
-      items:
-        type: object
-        properties:
-          code:
-            type: string
-          location:
-            type: string
-          message:
-            type: string
-          debug_uuid:
-            type: string
     Address:
       required:
       - city
@@ -481,6 +443,51 @@ components:
           type:
           - string
           - 'null'
+    CheckoutStatus:
+      type: string
+      enum:
+      - active
+      - completed
+      - deleted
+      - denied
+    Capture:
+      type: object
+      properties:
+        uuid:
+          type: string
+        amount:
+          $ref: '#/components/schemas/Price'
+    SessionStatus:
+      type: object
+      properties:
+        uuid:
+          type: string
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/Link'
+    Link:
+      type: object
+      properties:
+        href:
+          type: string
+        method:
+          type: string
+        rel:
+          type: string
+    Error:
+      type: array
+      items:
+        type: object
+        properties:
+          code:
+            type: string
+          location:
+            type: string
+          message:
+            type: string
+          debug_uuid:
+            type: string
     Refund:
       type: object
       properties:
@@ -488,6 +495,42 @@ components:
           type: string
         amount:
           $ref: '#/components/schemas/Price'
+    Intent:
+      type: string
+      enum:
+      - AUTH
+      - CAPTURE
+    Customer:
+      type: object
+      properties:
+        email:
+          type: string
+        first_name:
+          type: string
+        last_name:
+          type: string
+        phone:
+          type: string
+        dob:
+          type: string
+        token_expiration:
+          type: string
+          format: date-time
+        billing_address:
+          $ref: '#/components/schemas/Address'
+        shipping_address:
+          $ref: '#/components/schemas/Address'
+    Price:
+      required:
+      - amount_in_cents
+      - currency
+      type: object
+      properties:
+        amount_in_cents:
+          type: integer
+          format: int32
+        currency:
+          type: string
     OrderAuthorization:
       type: object
       properties:
@@ -520,70 +563,27 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Refund'
-    Capture:
-      type: object
-      properties:
-        uuid:
-          type: string
-        amount:
-          $ref: '#/components/schemas/Price'
-    CheckoutStatus:
-      type: string
-      enum:
-      - active
-      - completed
-      - deleted
-      - denied
-    Price:
-      required:
-      - amount_in_cents
-      - currency
-      type: object
-      properties:
-        amount_in_cents:
-          type: integer
-          format: int32
-        currency:
-          type: string
-    Link:
-      type: object
-      properties:
-        href:
-          type: string
-        method:
-          type: string
-        rel:
-          type: string
-    SessionStatus:
-      type: object
-      properties:
-        uuid:
-          type: string
-        links:
-          type: array
-          items:
-            $ref: '#/components/schemas/Link'
   responses:
-    BadRequest:
-      description: Invalid request
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
     NotFound:
       description: The specified resource was not found
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    Unprocessable:
-      description: Unable to process the request entity
+    BadRequest:
+      description: Invalid request
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
     Unauthorized:
       description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unprocessable:
+      description: Unable to process the request entity
       content:
         application/json:
           schema:

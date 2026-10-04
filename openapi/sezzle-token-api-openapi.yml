@@ -60,20 +60,26 @@ paths:
         '501':
           description: not implemented yet
 components:
+  responses:
+    NotFound:
+      description: The specified resource was not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: Invalid request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
-    Error:
-      type: array
-      items:
-        type: object
-        properties:
-          code:
-            type: string
-          location:
-            type: string
-          message:
-            type: string
-          debug_uuid:
-            type: string
     Token:
       type: object
       properties:
@@ -98,6 +104,19 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/Link'
+    Error:
+      type: array
+      items:
+        type: object
+        properties:
+          code:
+            type: string
+          location:
+            type: string
+          message:
+            type: string
+          debug_uuid:
+            type: string
     Link:
       type: object
       properties:
@@ -107,25 +126,6 @@ components:
           type: string
         rel:
           type: string
-  responses:
-    NotFound:
-      description: The specified resource was not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: Invalid request
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   securitySchemes:
     Bearer:
       type: apiKey

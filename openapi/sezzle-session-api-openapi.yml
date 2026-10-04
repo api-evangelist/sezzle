@@ -130,50 +130,6 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
-    Customer:
-      type: object
-      properties:
-        email:
-          type: string
-        first_name:
-          type: string
-        last_name:
-          type: string
-        phone:
-          type: string
-        dob:
-          type: string
-        token_expiration:
-          type: string
-          format: date-time
-        billing_address:
-          $ref: '#/components/schemas/Address'
-        shipping_address:
-          $ref: '#/components/schemas/Address'
-    Intent:
-      type: string
-      enum:
-      - AUTH
-      - CAPTURE
-    Error:
-      type: array
-      items:
-        type: object
-        properties:
-          code:
-            type: string
-          location:
-            type: string
-          message:
-            type: string
-          debug_uuid:
-            type: string
-    InstallmentPlan:
-      type: string
-      enum:
-      - 4-pay-biweekly
-      - 4-pay-monthly
-      - 6-pay-monthly
     Address:
       required:
       - city
@@ -205,15 +161,6 @@ components:
           type:
           - string
           - 'null'
-    Notification:
-      type: object
-      properties:
-        to_sms_phone:
-          type: string
-        to_email:
-          type: string
-        language:
-          type: string
     Order:
       type: object
       properties:
@@ -291,6 +238,43 @@ components:
                 $ref: '#/components/schemas/Notification'
               locale:
                 type: string
+    SessionStatus:
+      type: object
+      properties:
+        uuid:
+          type: string
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/Link'
+    InstallmentPlan:
+      type: string
+      enum:
+      - 4-pay-biweekly
+      - 4-pay-monthly
+      - 6-pay-monthly
+    Link:
+      type: object
+      properties:
+        href:
+          type: string
+        method:
+          type: string
+        rel:
+          type: string
+    Error:
+      type: array
+      items:
+        type: object
+        properties:
+          code:
+            type: string
+          location:
+            type: string
+          message:
+            type: string
+          debug_uuid:
+            type: string
     LineItem:
       required:
       - name
@@ -308,6 +292,41 @@ components:
           format: int32
         sku:
           type: string
+    Discount:
+      required:
+      - amount
+      - name
+      type: object
+      properties:
+        amount:
+          $ref: '#/components/schemas/Price'
+        name:
+          type: string
+    Intent:
+      type: string
+      enum:
+      - AUTH
+      - CAPTURE
+    Customer:
+      type: object
+      properties:
+        email:
+          type: string
+        first_name:
+          type: string
+        last_name:
+          type: string
+        phone:
+          type: string
+        dob:
+          type: string
+        token_expiration:
+          type: string
+          format: date-time
+        billing_address:
+          $ref: '#/components/schemas/Address'
+        shipping_address:
+          $ref: '#/components/schemas/Address'
     Price:
       required:
       - amount_in_cents
@@ -319,34 +338,15 @@ components:
           format: int32
         currency:
           type: string
-    Link:
+    Notification:
       type: object
       properties:
-        href:
+        to_sms_phone:
           type: string
-        method:
+        to_email:
           type: string
-        rel:
+        language:
           type: string
-    Discount:
-      required:
-      - amount
-      - name
-      type: object
-      properties:
-        amount:
-          $ref: '#/components/schemas/Price'
-        name:
-          type: string
-    SessionStatus:
-      type: object
-      properties:
-        uuid:
-          type: string
-        links:
-          type: array
-          items:
-            $ref: '#/components/schemas/Link'
   responses:
     NotFound:
       description: The specified resource was not found
@@ -360,14 +360,14 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    Unprocessable:
-      description: Unable to process the request entity
+    Unauthorized:
+      description: Unauthorized
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Unauthorized
+    Unprocessable:
+      description: Unable to process the request entity
       content:
         application/json:
           schema:

@@ -151,6 +151,33 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
+    WebhookEvent:
+      type: string
+      enum:
+      - customer.tokenized
+      - order.authorized
+      - order.captured
+      - order.refunded
+    Webhook:
+      required:
+      - url
+      type: object
+      properties:
+        url:
+          type: string
+        events:
+          type: array
+          items:
+            $ref: '#/components/schemas/WebhookEvent'
+    WebhookTest:
+      required:
+      - url
+      type: object
+      properties:
+        url:
+          type: string
+        event:
+          $ref: '#/components/schemas/WebhookEvent'
     Error:
       type: array
       items:
@@ -164,22 +191,6 @@ components:
             type: string
           debug_uuid:
             type: string
-    WebhookEvent:
-      type: string
-      enum:
-      - customer.tokenized
-      - order.authorized
-      - order.captured
-      - order.refunded
-    WebhookTest:
-      required:
-      - url
-      type: object
-      properties:
-        url:
-          type: string
-        event:
-          $ref: '#/components/schemas/WebhookEvent'
     Link:
       type: object
       properties:
@@ -189,17 +200,6 @@ components:
           type: string
         rel:
           type: string
-    Webhook:
-      required:
-      - url
-      type: object
-      properties:
-        url:
-          type: string
-        events:
-          type: array
-          items:
-            $ref: '#/components/schemas/WebhookEvent'
   responses:
     NotFound:
       description: The specified resource was not found
@@ -207,14 +207,14 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: Invalid request
+    Unprocessable:
+      description: Unable to process the request entity
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    Unprocessable:
-      description: Unable to process the request entity
+    BadRequest:
+      description: Invalid request
       content:
         application/json:
           schema:
