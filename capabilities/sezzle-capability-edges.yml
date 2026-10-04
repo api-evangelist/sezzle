@@ -1,0 +1,27 @@
+slug: sezzle
+provider: Sezzle
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 1
+edges:
+- tag: Webhooks
+  spec_file: sezzle-webhooks-api-openapi.yml
+  capability_id: BC-4270.80
+  capability_id_l1: BC-4270
+  capability_name: Webhook & Event Subscription Management
+  confidence: 0.85
+  evidence: POST /webhooks Create webhooks; GET /webhooks List webhooks; DELETE /webhooks Delete webhooks;
+    POST /webhooks/test Trigger a test webhook; schemas WebhookEvent, WebhookTest
+  reason: These operations are the vendor exposing lifecycle management of outbound event subscriptions
+    to integrating merchants — create, list, delete and test webhooks with WebhookEvent schemas — which
+    is exactly Webhook & Event Subscription Management within the developer/API ecosystem capability,
+    not a payments capability.

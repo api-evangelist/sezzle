@@ -250,6 +250,9 @@ apis:
     url: >-
       https://raw.githubusercontent.com/api-evangelist/sezzle/refs/heads/main/finops/finops.yml
 common:
+  - type: CapabilityMap
+    url: capabilities/sezzle-capability-edges.yml
+    name: Sezzle Business Capability Map
   - type: Website
     url: https://www.sezzle.com/
   - type: AgenticAccess
