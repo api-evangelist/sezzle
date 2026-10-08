@@ -52,3 +52,22 @@ plans:
       - Volume-based rate reductions
     contact:
       url: https://sezzle.com/merchant
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - negotiated
+  units: []
+  plans:
+  - name: Standard Merchant Plan
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Enterprise / Volume Plan
+    access: enterprise
+    model: negotiated
+    model_how: derived
+    units: []
+    periods: []
