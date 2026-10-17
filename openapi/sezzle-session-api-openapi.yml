@@ -129,66 +129,111 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  responses:
+    BadRequest:
+      description: Invalid request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The specified resource was not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unprocessable:
+      description: Unable to process the request entity
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
-    Address:
-      required:
-      - city
-      - country_code
-      - postal_code
-      - state
-      - street
+    Notification:
       type: object
       properties:
-        city:
+        to_sms_phone:
           type: string
-        country_code:
+        to_email:
           type: string
-        name:
-          type:
-          - string
-          - 'null'
+        language:
+          type: string
+    Customer:
+      type: object
+      properties:
+        email:
+          type: string
+        first_name:
+          type: string
+        last_name:
+          type: string
         phone:
-          type:
-          - string
-          - 'null'
-        postal_code:
           type: string
-        state:
+        dob:
           type: string
-        street:
-          type: string
-        street2:
-          type:
-          - string
-          - 'null'
-    Order:
-      type: object
-      properties:
-        reference_id:
-          type: string
-        description:
-          type: string
-        requires_shipping_info:
-          type: boolean
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/LineItem'
-        discounts:
-          type: array
-          items:
-            $ref: '#/components/schemas/Discount'
-        metadata:
-          type: object
-          additionalProperties:
-            type: string
-        shipping_amount:
-          $ref: '#/components/schemas/Price'
-        tax_amount:
-          $ref: '#/components/schemas/Price'
-        checkout_expiration:
+        token_expiration:
           type: string
           format: date-time
+        billing_address:
+          $ref: '#/components/schemas/Address'
+        shipping_address:
+          $ref: '#/components/schemas/Address'
+    Price:
+      required:
+      - amount_in_cents
+      - currency
+      type: object
+      properties:
+        amount_in_cents:
+          type: integer
+          format: int32
+        currency:
+          type: string
+    LineItem:
+      required:
+      - name
+      - price
+      - quantity
+      - sku
+      type: object
+      properties:
+        name:
+          type: string
+        price:
+          $ref: '#/components/schemas/Price'
+        quantity:
+          type: integer
+          format: int32
+        sku:
+          type: string
+    Link:
+      type: object
+      properties:
+        href:
+          type: string
+        method:
+          type: string
+        rel:
+          type: string
+    Error:
+      type: array
+      items:
+        type: object
+        properties:
+          code:
+            type: string
+          location:
+            type: string
+          message:
+            type: string
+          debug_uuid:
+            type: string
     Session:
       required:
       - cancel_url
@@ -238,60 +283,76 @@ components:
                 $ref: '#/components/schemas/Notification'
               locale:
                 type: string
-    SessionStatus:
-      type: object
-      properties:
-        uuid:
-          type: string
-        links:
-          type: array
-          items:
-            $ref: '#/components/schemas/Link'
     InstallmentPlan:
       type: string
       enum:
       - 4-pay-biweekly
       - 4-pay-monthly
       - 6-pay-monthly
-    Link:
-      type: object
-      properties:
-        href:
-          type: string
-        method:
-          type: string
-        rel:
-          type: string
-    Error:
-      type: array
-      items:
-        type: object
-        properties:
-          code:
-            type: string
-          location:
-            type: string
-          message:
-            type: string
-          debug_uuid:
-            type: string
-    LineItem:
+    Address:
       required:
-      - name
-      - price
-      - quantity
-      - sku
+      - city
+      - country_code
+      - postal_code
+      - state
+      - street
       type: object
       properties:
+        city:
+          type: string
+        country_code:
+          type: string
         name:
+          type:
+          - string
+          - 'null'
+        phone:
+          type:
+          - string
+          - 'null'
+        postal_code:
           type: string
-        price:
+        state:
+          type: string
+        street:
+          type: string
+        street2:
+          type:
+          - string
+          - 'null'
+    Intent:
+      type: string
+      enum:
+      - AUTH
+      - CAPTURE
+    Order:
+      type: object
+      properties:
+        reference_id:
+          type: string
+        description:
+          type: string
+        requires_shipping_info:
+          type: boolean
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/LineItem'
+        discounts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Discount'
+        metadata:
+          type: object
+          additionalProperties:
+            type: string
+        shipping_amount:
           $ref: '#/components/schemas/Price'
-        quantity:
-          type: integer
-          format: int32
-        sku:
+        tax_amount:
+          $ref: '#/components/schemas/Price'
+        checkout_expiration:
           type: string
+          format: date-time
     Discount:
       required:
       - amount
@@ -302,76 +363,15 @@ components:
           $ref: '#/components/schemas/Price'
         name:
           type: string
-    Intent:
-      type: string
-      enum:
-      - AUTH
-      - CAPTURE
-    Customer:
+    SessionStatus:
       type: object
       properties:
-        email:
+        uuid:
           type: string
-        first_name:
-          type: string
-        last_name:
-          type: string
-        phone:
-          type: string
-        dob:
-          type: string
-        token_expiration:
-          type: string
-          format: date-time
-        billing_address:
-          $ref: '#/components/schemas/Address'
-        shipping_address:
-          $ref: '#/components/schemas/Address'
-    Price:
-      required:
-      - amount_in_cents
-      - currency
-      type: object
-      properties:
-        amount_in_cents:
-          type: integer
-          format: int32
-        currency:
-          type: string
-    Notification:
-      type: object
-      properties:
-        to_sms_phone:
-          type: string
-        to_email:
-          type: string
-        language:
-          type: string
-  responses:
-    NotFound:
-      description: The specified resource was not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: Invalid request
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unprocessable:
-      description: Unable to process the request entity
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/Link'
   securitySchemes:
     Bearer:
       type: apiKey

@@ -158,17 +158,6 @@ components:
       - order.authorized
       - order.captured
       - order.refunded
-    Webhook:
-      required:
-      - url
-      type: object
-      properties:
-        url:
-          type: string
-        events:
-          type: array
-          items:
-            $ref: '#/components/schemas/WebhookEvent'
     WebhookTest:
       required:
       - url
@@ -178,6 +167,15 @@ components:
           type: string
         event:
           $ref: '#/components/schemas/WebhookEvent'
+    Link:
+      type: object
+      properties:
+        href:
+          type: string
+        method:
+          type: string
+        rel:
+          type: string
     Error:
       type: array
       items:
@@ -191,15 +189,17 @@ components:
             type: string
           debug_uuid:
             type: string
-    Link:
+    Webhook:
+      required:
+      - url
       type: object
       properties:
-        href:
+        url:
           type: string
-        method:
-          type: string
-        rel:
-          type: string
+        events:
+          type: array
+          items:
+            $ref: '#/components/schemas/WebhookEvent'
   responses:
     NotFound:
       description: The specified resource was not found
@@ -207,14 +207,14 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    Unprocessable:
-      description: Unable to process the request entity
+    BadRequest:
+      description: Invalid request
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: Invalid request
+    Unprocessable:
+      description: Unable to process the request entity
       content:
         application/json:
           schema:

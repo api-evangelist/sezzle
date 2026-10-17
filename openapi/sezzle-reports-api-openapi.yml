@@ -151,19 +151,6 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
-    Error:
-      type: array
-      items:
-        type: object
-        properties:
-          code:
-            type: string
-          location:
-            type: string
-          message:
-            type: string
-          debug_uuid:
-            type: string
     Payout:
       type: array
       items:
@@ -181,6 +168,19 @@ components:
           forex_fees:
             type: integer
           status:
+            type: string
+    Error:
+      type: array
+      items:
+        type: object
+        properties:
+          code:
+            type: string
+          location:
+            type: string
+          message:
+            type: string
+          debug_uuid:
             type: string
   responses:
     Unauthorized:

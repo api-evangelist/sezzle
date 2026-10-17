@@ -198,72 +198,6 @@ paths:
           $ref: '#/components/responses/Unprocessable'
 components:
   schemas:
-    Address:
-      required:
-      - city
-      - country_code
-      - postal_code
-      - state
-      - street
-      type: object
-      properties:
-        city:
-          type: string
-        country_code:
-          type: string
-        name:
-          type:
-          - string
-          - 'null'
-        phone:
-          type:
-          - string
-          - 'null'
-        postal_code:
-          type: string
-        state:
-          type: string
-        street:
-          type: string
-        street2:
-          type:
-          - string
-          - 'null'
-    Capture:
-      type: object
-      properties:
-        uuid:
-          type: string
-        amount:
-          $ref: '#/components/schemas/Price'
-    SessionStatus:
-      type: object
-      properties:
-        uuid:
-          type: string
-        links:
-          type: array
-          items:
-            $ref: '#/components/schemas/Link'
-    InstallmentPlan:
-      type: string
-      enum:
-      - 4-pay-biweekly
-      - 4-pay-monthly
-      - 6-pay-monthly
-    Error:
-      type: array
-      items:
-        type: object
-        properties:
-          code:
-            type: string
-          location:
-            type: string
-          message:
-            type: string
-          debug_uuid:
-            type: string
     Refund:
       type: object
       properties:
@@ -271,11 +205,13 @@ components:
           type: string
         amount:
           $ref: '#/components/schemas/Price'
-    Intent:
-      type: string
-      enum:
-      - AUTH
-      - CAPTURE
+    Capture:
+      type: object
+      properties:
+        uuid:
+          type: string
+        amount:
+          $ref: '#/components/schemas/Price'
     Customer:
       type: object
       properties:
@@ -316,6 +252,56 @@ components:
           type: string
         rel:
           type: string
+    Error:
+      type: array
+      items:
+        type: object
+        properties:
+          code:
+            type: string
+          location:
+            type: string
+          message:
+            type: string
+          debug_uuid:
+            type: string
+    InstallmentPlan:
+      type: string
+      enum:
+      - 4-pay-biweekly
+      - 4-pay-monthly
+      - 6-pay-monthly
+    Address:
+      required:
+      - city
+      - country_code
+      - postal_code
+      - state
+      - street
+      type: object
+      properties:
+        city:
+          type: string
+        country_code:
+          type: string
+        name:
+          type:
+          - string
+          - 'null'
+        phone:
+          type:
+          - string
+          - 'null'
+        postal_code:
+          type: string
+        state:
+          type: string
+        street:
+          type: string
+        street2:
+          type:
+          - string
+          - 'null'
     OrderAuthorization:
       type: object
       properties:
@@ -348,7 +334,27 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Refund'
+    Intent:
+      type: string
+      enum:
+      - AUTH
+      - CAPTURE
+    SessionStatus:
+      type: object
+      properties:
+        uuid:
+          type: string
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/Link'
   responses:
+    BadRequest:
+      description: Invalid request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
     NotFound:
       description: The specified resource was not found
       content:
@@ -357,12 +363,6 @@ components:
             $ref: '#/components/schemas/Error'
     Unprocessable:
       description: Unable to process the request entity
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: Invalid request
       content:
         application/json:
           schema:

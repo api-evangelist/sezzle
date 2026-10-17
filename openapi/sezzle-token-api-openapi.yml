@@ -61,14 +61,14 @@ paths:
           description: not implemented yet
 components:
   responses:
-    NotFound:
-      description: The specified resource was not found
+    BadRequest:
+      description: Invalid request
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: Invalid request
+    NotFound:
+      description: The specified resource was not found
       content:
         application/json:
           schema:
@@ -80,6 +80,28 @@ components:
           schema:
             $ref: '#/components/schemas/Error'
   schemas:
+    Link:
+      type: object
+      properties:
+        href:
+          type: string
+        method:
+          type: string
+        rel:
+          type: string
+    Error:
+      type: array
+      items:
+        type: object
+        properties:
+          code:
+            type: string
+          location:
+            type: string
+          message:
+            type: string
+          debug_uuid:
+            type: string
     Token:
       type: object
       properties:
@@ -104,28 +126,6 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/Link'
-    Error:
-      type: array
-      items:
-        type: object
-        properties:
-          code:
-            type: string
-          location:
-            type: string
-          message:
-            type: string
-          debug_uuid:
-            type: string
-    Link:
-      type: object
-      properties:
-        href:
-          type: string
-        method:
-          type: string
-        rel:
-          type: string
   securitySchemes:
     Bearer:
       type: apiKey

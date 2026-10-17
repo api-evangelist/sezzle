@@ -412,82 +412,6 @@ paths:
           $ref: '#/components/responses/Unprocessable'
 components:
   schemas:
-    Address:
-      required:
-      - city
-      - country_code
-      - postal_code
-      - state
-      - street
-      type: object
-      properties:
-        city:
-          type: string
-        country_code:
-          type: string
-        name:
-          type:
-          - string
-          - 'null'
-        phone:
-          type:
-          - string
-          - 'null'
-        postal_code:
-          type: string
-        state:
-          type: string
-        street:
-          type: string
-        street2:
-          type:
-          - string
-          - 'null'
-    CheckoutStatus:
-      type: string
-      enum:
-      - active
-      - completed
-      - deleted
-      - denied
-    Capture:
-      type: object
-      properties:
-        uuid:
-          type: string
-        amount:
-          $ref: '#/components/schemas/Price'
-    SessionStatus:
-      type: object
-      properties:
-        uuid:
-          type: string
-        links:
-          type: array
-          items:
-            $ref: '#/components/schemas/Link'
-    Link:
-      type: object
-      properties:
-        href:
-          type: string
-        method:
-          type: string
-        rel:
-          type: string
-    Error:
-      type: array
-      items:
-        type: object
-        properties:
-          code:
-            type: string
-          location:
-            type: string
-          message:
-            type: string
-          debug_uuid:
-            type: string
     Refund:
       type: object
       properties:
@@ -495,11 +419,13 @@ components:
           type: string
         amount:
           $ref: '#/components/schemas/Price'
-    Intent:
-      type: string
-      enum:
-      - AUTH
-      - CAPTURE
+    Capture:
+      type: object
+      properties:
+        uuid:
+          type: string
+        amount:
+          $ref: '#/components/schemas/Price'
     Customer:
       type: object
       properties:
@@ -531,6 +457,66 @@ components:
           format: int32
         currency:
           type: string
+    CheckoutStatus:
+      type: string
+      enum:
+      - active
+      - completed
+      - deleted
+      - denied
+    Link:
+      type: object
+      properties:
+        href:
+          type: string
+        method:
+          type: string
+        rel:
+          type: string
+    Error:
+      type: array
+      items:
+        type: object
+        properties:
+          code:
+            type: string
+          location:
+            type: string
+          message:
+            type: string
+          debug_uuid:
+            type: string
+    Address:
+      required:
+      - city
+      - country_code
+      - postal_code
+      - state
+      - street
+      type: object
+      properties:
+        city:
+          type: string
+        country_code:
+          type: string
+        name:
+          type:
+          - string
+          - 'null'
+        phone:
+          type:
+          - string
+          - 'null'
+        postal_code:
+          type: string
+        state:
+          type: string
+        street:
+          type: string
+        street2:
+          type:
+          - string
+          - 'null'
     OrderAuthorization:
       type: object
       properties:
@@ -563,27 +549,41 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Refund'
+    Intent:
+      type: string
+      enum:
+      - AUTH
+      - CAPTURE
+    SessionStatus:
+      type: object
+      properties:
+        uuid:
+          type: string
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/Link'
   responses:
-    NotFound:
-      description: The specified resource was not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
     BadRequest:
       description: Invalid request
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Unauthorized
+    NotFound:
+      description: The specified resource was not found
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
     Unprocessable:
       description: Unable to process the request entity
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Unauthorized
       content:
         application/json:
           schema:
