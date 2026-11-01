@@ -64,51 +64,167 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Sezzle is a buy-now-pay-later (BNPL) platform that enables merchants to offer installment payment options at checkout. Shoppers split purchases into four interest-free payments over six weeks. This repository contains the APIs.json 0.19 profile for Sezzle's public merchant APIs.
+Sezzle is a buy-now-pay-later platform that enables merchants to offer installment payment options at checkout. Its REST APIs support merchant checkout integration, order management, shopper authentication, customer tokenization, and payment installment processing — allowing shoppers to split purchases into four interest-free payments over six weeks.
 
-## APIs
+**Areas:** Buy Now Pay Later · Payments · Installments · Fintech · Merchant Integration · Checkout
 
-| API | Version | Base URL |
-|-----|---------|----------|
-| Sezzle API v2 | 2.0.0 | `https://gateway.sezzle.com/v2` |
-| Sezzle API v1 | 1.0 (legacy) | `https://gateway.sezzle.com/v1` |
+## Sezzle on APIs.io
 
-## Key Resources
+Everything profiled for Sezzle is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/sezzle/](https://apis.io/providers/sezzle/)** — or go straight to one of the APIs or properties below.
 
-- **Developer Docs:** https://docs.sezzle.com/docs/api/intro
-- **OpenAPI Spec (v2):** https://gateway.sezzle.com/v2api.yaml
-- **Sandbox:** `https://sandbox.gateway.sezzle.com/v2`
-- **Merchant Dashboard:** https://dashboard.sezzle.com/merchant
-- **Merchant Support:** https://merchant-help.sezzle.com
-- **GitHub:** https://github.com/sezzle
+### APIs (8)
 
-## Authentication
+- [Sezzle API v1](https://apis.io/apis/sezzle/sezzle-api-v1/) — The legacy Sezzle v1 API for merchants. Supports checkout creation and order completion via redirect-based flow. Deprecated in favor of v2; existing…
+- [Sezzle Bearer Authentication API](https://apis.io/apis/sezzle/sezzle-bearer-authentication-api/) — The Bearer Authentication API from Sezzle — 1 operation(s) for bearer authentication.
+- [Sezzle Customer API](https://apis.io/apis/sezzle/sezzle-customer-api/) — The Customer API from Sezzle — 4 operation(s) for customer.
+- [Sezzle Order API](https://apis.io/apis/sezzle/sezzle-order-api/) — The Order API from Sezzle — 7 operation(s) for order.
+- [Sezzle Reports API](https://apis.io/apis/sezzle/sezzle-reports-api/) — The Reports API from Sezzle — 4 operation(s) for reports.
+- [Sezzle Session API](https://apis.io/apis/sezzle/sezzle-session-api/) — The Session API from Sezzle — 2 operation(s) for session.
+- [Sezzle Token API](https://apis.io/apis/sezzle/sezzle-token-api/) — The Token API from Sezzle — 2 operation(s) for token.
+- [Sezzle Webhooks API](https://apis.io/apis/sezzle/sezzle-webhooks-api/) — The Webhooks API from Sezzle — 3 operation(s) for webhooks.
 
-Sezzle uses API key-based bearer token authentication. Merchants obtain a short-lived bearer token by posting their `public_key` and `private_key` to `POST /v2/authentication`. All subsequent API requests include the token in the `Authorization: Bearer <token>` header.
+### Published properties
 
-## Core Capabilities
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-- **Checkout Sessions** — Create redirect-based checkout sessions for Pay in 4 installments
-- **Order Management** — Capture, refund, release, reauthorize, and upcharge orders
-- **Customer Tokenization** — Save shopper payment methods for recurring or one-click purchases
-- **Webhooks** — Register and manage webhook endpoints for order and customer lifecycle events
-- **Settlement Reporting** — Access payout summaries and detailed settlement CSV exports
-- **Interest Accounts** — Check balance and activity for merchant interest accounts
+#### Agentic access (1)
 
-## Merchant Fees
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- **Transaction Fee:** ~6% + $0.30 per order (rates vary by merchant)
-- **Monthly Minimum:** $15 USD if less than $300 processed in a 30-day period
-- **Setup Fee:** None
+- [Sezzle Agentic Access](https://apis.io/agentic-access/sezzle/sezzle-agentic-access/)
 
-## SDKs and Integrations
+#### JSON Schema (8)
 
-- Node.js SDK: https://github.com/sezzle/sezzle-node
-- Android SDK: https://github.com/sezzle/sezzle-merchant-sdk-android
-- iOS SDK: https://github.com/sezzle/sezzle-merchant-sdk-ios
-- Magento 2: https://github.com/sezzle/sezzle-magento2
-- Shopify: https://apps.shopify.com/sezzle-payments
+The data models the API reads and writes.
 
-## Maintainer
+- [Address](https://apis.io/schemas/sezzle/address/)
+- [Customer](https://apis.io/schemas/sezzle/customer/)
+- [Discount](https://apis.io/schemas/sezzle/discount/)
+- [LineItem](https://apis.io/schemas/sezzle/line-item/)
+- [Order](https://apis.io/schemas/sezzle/order/)
+- [Payout](https://apis.io/schemas/sezzle/payout/)
+- [Price](https://apis.io/schemas/sezzle/price/)
+- [Webhook](https://apis.io/schemas/sezzle/webhook/)
 
-[API Evangelist](https://apievangelist.com) — kin@apievangelist.com
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Sezzle Context](https://apis.io/jsonld/sezzle/sezzle-context/)
+
+#### Examples (7)
+
+Example requests and responses.
+
+- [Authentication Request](https://apis.io/examples/sezzle/authentication-request/)
+- [Authentication Response](https://apis.io/examples/sezzle/authentication-response/)
+- [Capture Request](https://apis.io/examples/sezzle/capture-request/)
+- [Refund Request](https://apis.io/examples/sezzle/refund-request/)
+- [Session Request](https://apis.io/examples/sezzle/session-request/)
+- [Session Response](https://apis.io/examples/sezzle/session-response/)
+- [Webhook Create Request](https://apis.io/examples/sezzle/webhook-create-request/)
+
+#### Collections (7)
+
+Postman and Open Collection request collections.
+
+- [Sezzle API v2 Bearer Authentication API](https://apis.io/collections/sezzle/open-sezzle-bearer-authentication-api/)
+- [Sezzle API v2 Bearer Authentication Customer API](https://apis.io/collections/sezzle/open-sezzle-customer-api/)
+- [Sezzle API v2 Bearer Authentication Order API](https://apis.io/collections/sezzle/open-sezzle-order-api/)
+- [Sezzle API v2 Bearer Authentication Reports API](https://apis.io/collections/sezzle/open-sezzle-reports-api/)
+- [Sezzle API v2 Bearer Authentication Session API](https://apis.io/collections/sezzle/open-sezzle-session-api/)
+- [Sezzle API v2 Bearer Authentication Token API](https://apis.io/collections/sezzle/open-sezzle-token-api/)
+- [Sezzle API v2 Bearer Authentication Webhooks API](https://apis.io/collections/sezzle/open-sezzle-webhooks-api/)
+
+#### Governance rules (1)
+
+Spectral rulesets for the provider's contracts.
+
+- [Sezzle — jsonschema rules](https://apis.io/rules/sezzle/sezzle-jsonschema-spectral-rules/)
+
+#### Security (3)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Sezzle Authentication](https://apis.io/security/sezzle/sezzle-authentication/)
+- [Sezzle Domain Security](https://apis.io/security/sezzle/sezzle-domain-security/)
+- [Sezzle Vulnerability Disclosure](https://apis.io/security/sezzle/sezzle-vulnerability-disclosure/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Plans](https://apis.io/plans/sezzle/plans/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Rate Limits](https://apis.io/rate-limits/sezzle/rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Finops](https://apis.io/finops/sezzle/finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.sezzle.com/)
+- [Pricing](https://sezzle.com/pricing)
+- [Blog](https://sezzle.com/news/)
+
+## API Evangelist rating
+
+**Kin Score 31.3** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 52.0 |
+| Contract governance | 9.8 |
+| Operational transparency | 5.3 |
+| Developer ergonomics | 33.3 |
+| Access clarity | 15.8 |
+
+**Agent readiness 24.0** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 24.1** — Payments
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/sezzle/](https://apis.io/providers/sezzle/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Sezzle: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/sezzle/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
